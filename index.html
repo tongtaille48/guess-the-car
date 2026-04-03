@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Guess the Car">
@@ -350,6 +350,11 @@ body::before {
 .volume-btn-game { flex-shrink: 0; width: clamp(34px,9vw,42px); height: clamp(34px,9vw,42px); background: var(--s2); border: 2px solid var(--bd2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
 .volume-btn-game svg { pointer-events: none; width: 55%; height: 55%; }
 
+
+/* Bloquer zoom */
+html { touch-action: pan-x pan-y; -ms-touch-action: pan-x pan-y; }
+body { touch-action: pan-x pan-y; }
+
 </style>
 </head>
 <body>
@@ -537,11 +542,13 @@ body::before {
       <button class="cat-btn available" id="cat-daily">
         <span class="cat-icon">🚗</span>
         <span class="cat-name">VOITURES DU QUOTIDIEN</span>
+        <span class="cat-count">4 voitures</span>
         
       </button>
       <button class="cat-btn available" id="cat-vintage">
         <span class="cat-icon">🕰️</span>
         <span class="cat-name">VOITURES VINTAGE</span>
+        <span class="cat-count">1 voiture</span>
       </button>
       <button class="cat-btn locked" id="cat-super">
         <span class="cat-icon">🏎️</span>
@@ -801,7 +808,7 @@ function playTone(freq,type,dur,vol,delay){
   o.start(AC.currentTime+delay); o.stop(AC.currentTime+delay+dur);
 }
 
-function soundMoteur(){
+function soundMoteur(){ if(isMuted) return;
   var o=AC.createOscillator(), g=AC.createGain(), dist=AC.createWaveShaper();
   function makeDistCurve(a){ var n=256,c=new Float32Array(n); for(var i=0;i<n;i++){var x=i*2/n-1;c[i]=(Math.PI+a)*x/(Math.PI+a*Math.abs(x));} return c; }
   dist.curve=makeDistCurve(300); dist.oversample='4x';
@@ -815,7 +822,7 @@ function soundMoteur(){
   o.start(AC.currentTime); o.stop(AC.currentTime+0.25);
 }
 
-function soundKlaxon(){
+function soundKlaxon(){ if(isMuted) return;
   [0,0.35].forEach(function(delay){
     var o1=AC.createOscillator(), o2=AC.createOscillator();
     var g=AC.createGain(), mix=AC.createGain();
@@ -851,7 +858,7 @@ function startUrgencyBeeps(tl){
   else if(tl<=5){ clearInterval(urgencyInterval2); urgencyInterval2=setInterval(function(){ if(!answered) playTone(1040,'square',.05,.15); },300); }
 }
 
-function soundDrift(){
+function soundDrift(){ if(isMuted) return;
   var sr=AC.sampleRate, dur=1.2;
   var buf=AC.createBuffer(2,Math.floor(sr*dur),sr);
   for(var ch=0;ch<2;ch++){
@@ -1511,6 +1518,51 @@ var link = document.createElement('link');
 link.rel = 'manifest';
 link.href = manifestURL;
 document.head.appendChild(link);
+
+
+// ===== GENERATE APP ICON =====
+(function(){
+  try {
+    var c = document.createElement('canvas');
+    c.width = 180; c.height = 180;
+    var ctx = c.getContext('2d');
+    // Fond noir
+    ctx.fillStyle = '#0F0F12';
+    ctx.fillRect(0, 0, 180, 180);
+    // Porsche jaune vue de face - pixel art
+    var s = 6; // taille pixel
+    var px = function(x,y,w,h,col){ ctx.fillStyle=col; ctx.fillRect(x*s,y*s,w*s,h*s); };
+    // Toit
+    px(5,3,20,3,'#CCAA00');
+    // Pare-brise
+    px(4,5,22,4,'#88CCEE');
+    // Capot
+    px(2,8,26,5,'#FFD600');
+    // Bas de caisse
+    px(1,12,28,4,'#CC9900');
+    // Pare-choc
+    px(3,15,24,3,'#FFD600');
+    // Phares
+    px(1,9,4,3,'#FFFFAA');
+    px(25,9,4,3,'#FFFFAA');
+    // Roues
+    px(1,17,8,6,'#111');
+    px(2,18,6,4,'#333');
+    px(21,17,8,6,'#111');
+    px(22,18,6,4,'#333');
+    // Logo centre
+    px(12,9,6,4,'#CC9900');
+    px(13,10,4,2,'#FFD600');
+    var dataURL = c.toDataURL('image/png');
+    // Mettre à jour apple-touch-icon
+    var link = document.querySelector('link[rel="apple-touch-icon"]');
+    if(link) link.href = dataURL;
+    // Aussi ajouter shortcut icon pour Chrome etc
+    var link2 = document.createElement('link');
+    link2.rel = 'icon'; link2.type = 'image/png'; link2.href = dataURL;
+    document.head.appendChild(link2);
+  } catch(e){}
+})();
 
 </script>
 
