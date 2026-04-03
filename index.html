@@ -1322,24 +1322,30 @@ function showEnd(){
 function shareScore(){
   soundMoteur();
   var correct=questionLog.filter(function(l){ return l.pts>0; }).length;
-  var emoji=questionLog.map(function(l){ return l.pts>0?'\u2705':'\u274C'; }).join('');
   var name=pseudo||'ANONYME';
-  var maxScore=calcMaxScore();
-  var pct=Math.round(score/maxScore*100);
-  var mentions=["Retourne voir ton garagiste...","Tu conduis encore sans permis ?","Pas mal, tu sors du parking !","Beau pilotage, il manque un virage !","POLE POSITION !"];
-  var mention=mentions[Math.min(Math.floor(pct/25),4)];
-  var tmpS=0, bestS=0;
-  questionLog.forEach(function(l){ if(l.pts>0){ tmpS++; if(tmpS>bestS) bestS=tmpS; } else tmpS=0; });
-  var streakTxt=bestS>=2?'\n\uD83D\uDD25 Meilleur streak : x'+bestS+' !!':'';
-  var modeShareLabel = currentMode==='endless'?'\u267E\uFE0F Endless Mode':'\uD83C\uDFC1 Mode Classique';
-  var text='\uD83C\uDFCE\uFE0F '+name+' vient de terminer une partie de Guess The Car !'
-    +'\n\uD83D\uDE97 Cat\u00e9gorie : '+currentCategory+'  |  '+modeShareLabel
-    +'\n\n\uD83C\uDFAF R\u00e9sultat : '+mention
-    +'\n\uD83D\uDCCA Score : '+score+' pts ('+correct+'/'+questions.length+')'
-    +streakTxt
-    +'\n\n\uD83D\uDC49 Peux-tu faire mieux ?'
-    +'\n\uD83D\uDD17 https://tongtaille48.github.io/guess-the-car/'
-    +'\nGuess The Car \u2014 By Charly';
+  var modeShareLabel=currentMode==='endless'?'♾️ Endless Mode':'🏁 Mode Classique';
+  var text;
+  if(currentMode==='endless'){
+    var endMsgs=[
+      {min:0,max:0,msg:"Même pas une voiture... 😅"},
+      {min:1,max:2,msg:"Pas mal pour un début !"},
+      {min:3,max:4,msg:"Tu commences à t'y connaître !"},
+      {min:5,max:6,msg:"Beau palmarès, pilote !"},
+      {min:7,max:99,msg:"LÉGENDAIRE ! 🏆"}
+    ];
+    var emsg=endMsgs[0].msg;
+    for(var ei=0;ei<endMsgs.length;ei++){ if(correct>=endMsgs[ei].min&&correct<=endMsgs[ei].max){ emsg=endMsgs[ei].msg; break; } }
+    text='🏎️ '+name+' vient de terminer une partie de Guess The Car !'+'\n🚗 Catégorie : '+currentCategory+'  |  '+modeShareLabel+'\n\n🏁 '+correct+' voiture'+(correct>1?'s':'')+' devinée'+(correct>1?'s':'')+' — '+score+' pts'+'\n🎯 '+emsg+'\n\n👉 Peux-tu faire mieux ?'+'\n🔗 https://tongtaille48.github.io/guess-the-car/'+'\nGuess The Car — By Charly';
+  } else {
+    var maxScore=calcMaxScore();
+    var pct=Math.round(score/maxScore*100);
+    var mentions=["Retourne voir ton garagiste...","Tu conduis encore sans permis ?","Pas mal, tu sors du parking !","Beau pilotage, il manque un virage !","POLE POSITION !"];
+    var mention=mentions[Math.min(Math.floor(pct/25),4)];
+    var tmpS=0,bestS=0;
+    questionLog.forEach(function(l){ if(l.pts>0){ tmpS++; if(tmpS>bestS) bestS=tmpS; } else tmpS=0; });
+    var streakTxt=bestS>=2?'\n🔥 Meilleur streak : x'+bestS+' !!':'';
+    text='🏎️ '+name+' vient de terminer une partie de Guess The Car !'+'\n🚗 Catégorie : '+currentCategory+'  |  '+modeShareLabel+'\n\n🎯 Résultat : '+mention+'\n📊 Score : '+score+' pts ('+correct+'/'+questions.length+')'+streakTxt+'\n\n👉 Peux-tu faire mieux ?'+'\n🔗 https://tongtaille48.github.io/guess-the-car/'+'\nGuess The Car — By Charly';
+  }
   if(navigator.share){ navigator.share({title:'Guess The Car',text:text}).catch(function(){}); }
   else{ navigator.clipboard.writeText(text).then(function(){ alert('Score copié !'); }).catch(function(){ alert(text); }); }
 }
