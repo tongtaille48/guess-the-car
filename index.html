@@ -542,13 +542,13 @@ body { touch-action: pan-x pan-y; }
       <button class="cat-btn available" id="cat-daily">
         <span class="cat-icon">🚗</span>
         <span class="cat-name">VOITURES DU QUOTIDIEN</span>
-        <span class="cat-count">4 voitures</span>
+        <span class="cat-count">🔧 4 voitures au garage</span>
         
       </button>
       <button class="cat-btn available" id="cat-vintage">
         <span class="cat-icon">🕰️</span>
         <span class="cat-name">VOITURES VINTAGE</span>
-        <span class="cat-count">1 voiture</span>
+        <span class="cat-count">🔧 1 voiture au garage</span>
       </button>
       <button class="cat-btn locked" id="cat-super">
         <span class="cat-icon">🏎️</span>
@@ -931,13 +931,13 @@ function showScreen(id){
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById('screen-'+id).classList.add('active');
   var hide = (id==='game' || id==='end');
-  // Masquer Porsche et pièces pendant le jeu et les résultats
   var porsche = document.querySelector('.porsche-corner');
   if(porsche) porsche.style.display = hide ? 'none' : '';
   document.querySelectorAll('.coin').forEach(function(c){ c.style.display = hide ? 'none' : ''; });
-  // Bouton volume : menu principal hors jeu, btn-volume-game pendant le jeu
   var btnVol = document.getElementById('btn-volume');
   if(btnVol) btnVol.style.display = hide ? 'none' : '';
+  var badge = document.querySelector('.version-badge');
+  if(badge) badge.style.display = hide ? 'none' : '';
 }
 function showModal(id){ soundMoteur(); document.getElementById('modal-'+id).classList.add('show'); }
 function hideModal(id){ document.getElementById('modal-'+id).classList.remove('show'); }
@@ -1563,6 +1563,17 @@ document.head.appendChild(link);
     document.head.appendChild(link2);
   } catch(e){}
 })();
+
+
+// Bloquer zoom PC
+document.addEventListener('wheel', function(e){
+  if(e.ctrlKey){ e.preventDefault(); }
+}, {passive: false});
+document.addEventListener('keydown', function(e){
+  if(e.ctrlKey && (e.key==='+' || e.key==='-' || e.key==='=' || e.key==='0')){
+    e.preventDefault();
+  }
+});
 
 </script>
 
