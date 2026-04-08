@@ -404,7 +404,6 @@ body { touch-action: pan-x pan-y; }
 </head>
 <body>
 
-<div id="app">
 <div class="coin coin-left"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
   <rect x="4" y="0" width="8" height="2" fill="#FFD600"/>
   <rect x="2" y="2" width="12" height="2" fill="#FFD600"/>
@@ -464,6 +463,8 @@ body { touch-action: pan-x pan-y; }
   <div style="font-family:'Press Start 2P',monospace;font-size:clamp(8px,2.5vw,11px);color:var(--yellow);line-height:2.2;letter-spacing:1px">RETOURNE TON<br>TÉLÉPHONE !</div>
   
 </div>
+
+<div id="app">
 
 <button class="volume-btn" id="btn-volume" title="Volume">
 <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
@@ -823,6 +824,7 @@ body { touch-action: pan-x pan-y; }
 
 var CARS = [];
 var CARS_VINTAGE = [];
+var CARS_LOADED = false;
 
 
 const TIMER_SEC = 20;
