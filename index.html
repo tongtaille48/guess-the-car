@@ -1387,15 +1387,25 @@ function shareScore(){
 
 function startGame(){
   if(!CARS_LOADED){
+    // Afficher message de chargement
+    var loadBtn = document.getElementById('btn-play');
+    if(loadBtn) loadBtn.textContent = '⏳ CHARGEMENT...';
     fetch('cars.json')
-      .then(function(r){ return r.json(); })
+      .then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function(data){
         CARS = data.CARS || [];
         CARS_VINTAGE = data.CARS_VINTAGE || [];
         CARS_LOADED = true;
+        if(loadBtn) loadBtn.textContent = '🏎️ PARTIE RAPIDE';
         startGame();
       })
-      .catch(function(){ alert('Erreur de chargement des voitures !'); });
+      .catch(function(err){
+        if(loadBtn) loadBtn.textContent = '🏎️ PARTIE RAPIDE';
+        alert('Erreur chargement: ' + err.message);
+      });
     return;
   }
   soundMoteur();
