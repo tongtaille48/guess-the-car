@@ -974,6 +974,7 @@ function playAmbianceLoop(){
 function showScreen(id){
   document.querySelectorAll('.screen').forEach(function(s){ s.classList.remove('active'); });
   document.getElementById('screen-'+id).classList.add('active');
+  if(id==='home'){ var b=document.getElementById('btn-play'); if(b) b.textContent='🏎️ PARTIE RAPIDE'; }
   var hide = (id==='game' || id==='end');
   var porsche = document.querySelector('.porsche-corner');
   if(porsche) porsche.style.display = hide ? 'none' : '';
