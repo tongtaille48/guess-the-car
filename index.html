@@ -596,7 +596,7 @@ body { touch-action: pan-x pan-y; }
       <button class="cat-btn available" id="cat-daily">
         <span class="cat-icon">🚗</span>
         <span class="cat-name">VOITURES DU QUOTIDIEN</span>
-        <span class="cat-count">🔧 166 voitures au garage</span>
+        <span class="cat-count">🔧 2 voitures au garage</span>
         
       </button>
       <button class="cat-btn locked" id="cat-vintage">
@@ -1291,8 +1291,8 @@ function showNext(){
 }
 
 function getCarsForCategory(){
-  if(currentCategory==='Voitures Vintage') return CARS_VINTAGE.slice();
-  return CARS.slice();
+  if(currentCategory==='Voitures Vintage') return CARS_VINTAGE.filter(function(c){return c.img;}).slice();
+  return CARS.filter(function(c){return c.img;}).slice();
 }
 
 function resolveQuestion(res,userInput){
