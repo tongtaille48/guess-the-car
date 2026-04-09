@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -23,39 +22,39 @@
 
 /* VARIABLES */
 :root {
-–red:#E8321A; –rdk:#B82010; –red2:#FF5533;
-–yellow:#FFD600; –white:#F0F0F0;
-–bg:#0F0F12; –s1:#141418; –s2:#1C1C22; –s3:#26262F;
-–bd:rgba(232,50,26,0.2); –bd2:rgba(232,50,26,0.45);
-–tx:#EFEFEF; –tx2:#999; –tx3:#555;
-–ok:#00CC66; –ko:#E8321A;
-–fs-tiny: clamp(6px, 1.8vw, 8px);
-–fs-small: clamp(8px, 2.2vw, 11px);
-–fs-base: clamp(11px, 3vw, 14px);
-–fs-md: clamp(13px, 3.5vw, 16px);
-–fs-lg: clamp(18px, 5vw, 24px);
-–fs-xl: clamp(24px, 7vw, 36px);
-–fs-xxl: clamp(36px, 10vw, 56px);
+  --red:#E8321A; --rdk:#B82010; --red2:#FF5533;
+  --yellow:#FFD600; --white:#F0F0F0;
+  --bg:#0F0F12; --s1:#141418; --s2:#1C1C22; --s3:#26262F;
+  --bd:rgba(232,50,26,0.2); --bd2:rgba(232,50,26,0.45);
+  --tx:#EFEFEF; --tx2:#999; --tx3:#555;
+  --ok:#00CC66; --ko:#E8321A;
+  --fs-tiny: clamp(6px, 1.8vw, 8px);
+  --fs-small: clamp(8px, 2.2vw, 11px);
+  --fs-base: clamp(11px, 3vw, 14px);
+  --fs-md: clamp(13px, 3.5vw, 16px);
+  --fs-lg: clamp(18px, 5vw, 24px);
+  --fs-xl: clamp(24px, 7vw, 36px);
+  --fs-xxl: clamp(36px, 10vw, 56px);
 }
 
 html, body {
-width: 100%;
-height: 100%;
-overflow: hidden;
-background: var(–bg);
-color: var(–tx);
-font-family: ‘DM Sans’, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--tx);
+  font-family: 'DM Sans', sans-serif;
 }
 
 /* Grille fond */
 body::before {
-content: ‘’;
-position: fixed; inset: 0;
-background-image:
-linear-gradient(rgba(232,50,26,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(232,50,26,0.03) 1px, transparent 1px);
-background-size: 32px 32px;
-pointer-events: none; z-index: 0;
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(232,50,26,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,50,26,0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none; z-index: 0;
 }
 
 #app{width:420px;max-width:420px;height:100dvh;margin:0 auto;padding:12px;position:relative;overflow:hidden;z-index:1}
@@ -69,65 +68,65 @@ pointer-events: none; z-index: 0;
 .coin-left { left: 8px; }
 .coin-right { right: 8px; }
 @keyframes coinSpin {
-0%   { filter: brightness(1) }
-25%  { filter: brightness(1.3) scaleX(0.6) }
-50%  { filter: brightness(1.6) scaleX(0.1) }
-75%  { filter: brightness(1.3) scaleX(0.6) }
-100% { filter: brightness(1) }
+  0%   { filter: brightness(1) }
+  25%  { filter: brightness(1.3) scaleX(0.6) }
+  50%  { filter: brightness(1.6) scaleX(0.1) }
+  75%  { filter: brightness(1.3) scaleX(0.6) }
+  100% { filter: brightness(1) }
 }
 .porsche-corner{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);width:clamp(44px,11vw,64px);z-index:52;pointer-events:none;image-rendering:pixelated;animation:porscheIdle .4s steps(2) infinite}
 @keyframes porscheIdle { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
 
-.volume-btn{position:absolute;bottom:24px;right:16px;width:clamp(44px,12vw,56px);height:clamp(44px,12vw,56px);z-index:51;background:var(–s2);border:2px solid var(–bd2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.volume-btn{position:absolute;bottom:24px;right:16px;width:clamp(44px,12vw,56px);height:clamp(44px,12vw,56px);z-index:51;background:var(--s2);border:2px solid var(--bd2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
 .volume-btn svg { pointer-events: none; width: 60%; height: 60%; }
-.volume-btn:hover { border-color: var(–red); }
+.volume-btn:hover { border-color: var(--red); }
 
-.version-badge{position:fixed;bottom:24px;left:calc(50% - 210px + 16px);font-family:‘Press Start 2P’,monospace;font-size:clamp(5px,1.3vw,7px);color:#ffffff !important;letter-spacing:1px;pointer-events:none;z-index:49}
+.version-badge{position:fixed;bottom:24px;left:calc(50% - 210px + 16px);font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.3vw,7px);color:#ffffff !important;letter-spacing:1px;pointer-events:none;z-index:49}
 
 /* ===== HOME ===== */
 #screen-home{align-items:center;justify-content:center;gap:clamp(8px,2vw,14px);text-align:center;padding-bottom:clamp(80px,20vw,120px);overflow:hidden}
 
 .ferrari-pixel {
-width: 100%;
-max-width: clamp(160px, 50vw, 280px);
-height: auto;
-image-rendering: pixelated;
-filter: drop-shadow(0 4px 16px rgba(232,50,26,0.5));
+  width: 100%;
+  max-width: clamp(160px, 50vw, 280px);
+  height: auto;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 4px 16px rgba(232,50,26,0.5));
 }
 
-.home-logo { font-family: ‘Press Start 2P’, monospace; text-align: center; }
-.home-logo .line1 { font-size: var(–fs-tiny); color: var(–tx2); letter-spacing: 3px; display: block; margin-bottom: 6px; }
-.home-logo .line2 { font-size: clamp(20px, 6vw, 32px); color: var(–white); text-shadow: 0 0 10px rgba(232,50,26,0.8); display: block; line-height: 1.3; }
-.home-logo .line2 em { color: var(–red); font-style: normal; }
-.home-logo .line3 { font-size: var(–fs-tiny); color: var(–yellow); letter-spacing: 2px; display: block; margin-top: 8px; margin-bottom: 16px; animation: blink 1.2s step-end infinite; }
+.home-logo { font-family: 'Press Start 2P', monospace; text-align: center; }
+.home-logo .line1 { font-size: var(--fs-tiny); color: var(--tx2); letter-spacing: 3px; display: block; margin-bottom: 6px; }
+.home-logo .line2 { font-size: clamp(20px, 6vw, 32px); color: var(--white); text-shadow: 0 0 10px rgba(232,50,26,0.8); display: block; line-height: 1.3; }
+.home-logo .line2 em { color: var(--red); font-style: normal; }
+.home-logo .line3 { font-size: var(--fs-tiny); color: var(--yellow); letter-spacing: 2px; display: block; margin-top: 8px; margin-bottom: 16px; animation: blink 1.2s step-end infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
 .menu-btns { display: flex; flex-direction: column; gap: 10px; width: min(320px, 88%); margin: 0 auto; }
 .menu-btn {
-background: transparent; border: 2px solid; border-radius: 3px;
-padding: clamp(10px, 3vw, 15px) 16px;
-font-family: ‘Press Start 2P’, monospace;
-font-size: clamp(8px, 2.2vw, 11px);
-letter-spacing: 1px; cursor: pointer; transition: all .15s;
-width: 100%; text-align: center; position: relative;
+  background: transparent; border: 2px solid; border-radius: 3px;
+  padding: clamp(10px, 3vw, 15px) 16px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(8px, 2.2vw, 11px);
+  letter-spacing: 1px; cursor: pointer; transition: all .15s;
+  width: 100%; text-align: center; position: relative;
 }
-.menu-btn.play  { border-color: var(–red);    color: var(–red);    background: rgba(232,50,26,.08); box-shadow: 0 0 14px rgba(232,50,26,.2); }
-.menu-btn.rules { border-color: var(–yellow);  color: var(–yellow); }
-.menu-btn.scores{ border-color: var(–ok);      color: var(–ok);     background: rgba(0,204,102,.15); box-shadow: 0 0 14px rgba(0,204,102,.25); }
-.menu-btn.credits{ border-color: var(–tx3);    color: var(–tx2); }
+.menu-btn.play  { border-color: var(--red);    color: var(--red);    background: rgba(232,50,26,.08); box-shadow: 0 0 14px rgba(232,50,26,.2); }
+.menu-btn.rules { border-color: var(--yellow);  color: var(--yellow); }
+.menu-btn.scores{ border-color: var(--ok);      color: var(--ok);     background: rgba(0,204,102,.15); box-shadow: 0 0 14px rgba(0,204,102,.25); }
+.menu-btn.credits{ border-color: var(--tx3);    color: var(--tx2); }
 .menu-btn:hover { opacity: .85; }
 .menu-btn:active { transform: scale(.97); }
 
 .racing-scene{width:580px;height:100px !important;position:relative;overflow:hidden;border-radius:0;z-index:10;margin-left:-14px}
 .sky-line { position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to bottom,#0F0F18,#1A1A28); }
 .road { position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: #2A2A2A; overflow: hidden; }
-.road-line { position: absolute; bottom: 40%; height: 3px; background: var(–yellow); animation: roadScroll .4s linear infinite; }
+.road-line { position: absolute; bottom: 40%; height: 3px; background: var(--yellow); animation: roadScroll .4s linear infinite; }
 .road-line:nth-child(1){width:10%;left:0;animation-delay:0s}
 .road-line:nth-child(2){width:10%;left:25%;animation-delay:-.1s}
 .road-line:nth-child(3){width:10%;left:50%;animation-delay:-.2s}
 .road-line:nth-child(4){width:10%;left:75%;animation-delay:-.3s}
 @keyframes roadScroll{from{transform:translateX(0)}to{transform:translateX(-25%)}}
-.road-kerb { position: absolute; bottom: 0; left: 0; width: 200%; height: 30%; background: repeating-linear-gradient(90deg,var(–red) 0,var(–red) 20px,#fff 20px,#fff 40px); animation: kerbScroll .3s linear infinite; }
+.road-kerb { position: absolute; bottom: 0; left: 0; width: 200%; height: 30%; background: repeating-linear-gradient(90deg,var(--red) 0,var(--red) 20px,#fff 20px,#fff 40px); animation: kerbScroll .3s linear infinite; }
 @keyframes kerbScroll{from{transform:translateX(0)}to{transform:translateX(-10%)}}
 .road-top { position: absolute; bottom: 50%; left: 0; width: 100%; height: 2px; background: #444; }
 .pcar { position: absolute; bottom: 40%; image-rendering: pixelated; animation: carDrive linear infinite; }
@@ -136,91 +135,92 @@ width: 100%; text-align: center; position: relative;
 
 /* ===== PSEUDO ===== */
 #screen-pseudo { align-items: center; justify-content: center; gap: 16px; text-align: center; }
-.pseudo-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(10px,3vw,14px); color: var(–white); line-height: 1.8; }
-.pseudo-sub { font-size: var(–fs-base); color: var(–tx2); }
+.pseudo-title { font-family: 'Press Start 2P', monospace; font-size: clamp(10px,3vw,14px); color: var(--white); line-height: 1.8; }
+.pseudo-sub { font-size: var(--fs-base); color: var(--tx2); }
 .pseudo-input {
-background: var(–s1); border: 2px solid var(–bd2); border-radius: 3px;
-padding: 12px 16px; font-family: ‘Orbitron’, sans-serif;
-font-size: 16px; color: var(–red2); outline: none;
-width: min(320px, 88%); text-align: center; letter-spacing: 2px;
+  background: var(--s1); border: 2px solid var(--bd2); border-radius: 3px;
+  padding: 12px 16px; font-family: 'Orbitron', sans-serif;
+  font-size: 16px; color: var(--red2); outline: none;
+  width: min(320px, 88%); text-align: center; letter-spacing: 2px;
 }
-.pseudo-input:focus { border-color: var(–red); }
+.pseudo-input:focus { border-color: var(--red); }
 .pseudo-btn {
-background: var(–red); border: none; border-radius: 3px;
-padding: 13px 28px; font-family: ‘Press Start 2P’, monospace;
-font-size: clamp(9px,2.5vw,11px); color: #fff; cursor: pointer;
-letter-spacing: 2px; box-shadow: 0 4px 0 var(–rdk); margin-top: 12px;
+  background: var(--red); border: none; border-radius: 3px;
+  padding: 13px 28px; font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px,2.5vw,11px); color: #fff; cursor: pointer;
+  letter-spacing: 2px; box-shadow: 0 4px 0 var(--rdk); margin-top: 12px;
 }
 
 /* ===== CATEGORIES ===== */
 #screen-categories { align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 0 12px; }
-.cat-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(11px,3vw,15px); color: var(–white); line-height: 1.8; }
-.cat-subtitle { font-size: var(–fs-base); color: var(–tx2); }
+.cat-title { font-family: 'Press Start 2P', monospace; font-size: clamp(11px,3vw,15px); color: var(--white); line-height: 1.8; }
+.cat-subtitle { font-size: var(--fs-base); color: var(--tx2); }
 .cat-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: min(360px, 92%); }
-.cat-btn { background: var(–s2); border: 2px solid; border-radius: 4px; padding: clamp(12px,3vw,16px) 16px; cursor: pointer; transition: all .15s; display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
-.cat-btn.available { border-color: var(–red); box-shadow: 0 0 12px rgba(232,50,26,.2); }
+.cat-btn { background: var(--s2); border: 2px solid; border-radius: 4px; padding: clamp(12px,3vw,16px) 16px; cursor: pointer; transition: all .15s; display: flex; flex-direction: column; align-items: center; gap: 5px; width: 100%; }
+.cat-btn.available { border-color: var(--red); box-shadow: 0 0 12px rgba(232,50,26,.2); }
 .cat-btn.available:hover { background: rgba(232,50,26,.1); }
-.cat-btn.locked { border-color: var(–tx3); opacity: .5; cursor: not-allowed; }
+.cat-btn.locked { border-color: var(--tx3); opacity: .5; cursor: not-allowed; }
 .cat-icon { font-size: clamp(22px,6vw,28px); }
-.cat-name { font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–tx); letter-spacing: 1px; }
-.cat-btn.available .cat-name { color: var(–red); }
-.cat-count { font-size: var(–fs-small); color: var(–tx2); }
-.cat-btn.locked .cat-count { color: var(–tx3); }
-.cat-back-btn { background: transparent; border: 2px solid var(–tx3); border-radius: 3px; padding: 10px 20px; font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–tx2); cursor: pointer; }
+.cat-name { font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--tx); letter-spacing: 1px; }
+.cat-btn.available .cat-name { color: var(--red); }
+.cat-count { font-size: var(--fs-small); color: var(--tx2); }
+.cat-btn.locked .cat-count { color: var(--tx3); }
+.cat-back-btn { background: transparent; border: 2px solid var(--tx3); border-radius: 3px; padding: 10px 20px; font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--tx2); cursor: pointer; }
 
 /* ===== READY ===== */
 #screen-ready { align-items: center; justify-content: center; gap: 14px; text-align: center; padding: 0 12px; }
 .ready-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
 .ready-flag { font-size: clamp(28px,8vw,40px); }
-.ready-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(13px,4vw,18px); color: var(–white); line-height: 1.8; }
-.ready-sub { font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–yellow); animation: pulse-dot .8s ease-in-out infinite alternate; }
+.ready-title { font-family: 'Press Start 2P', monospace; font-size: clamp(13px,4vw,18px); color: var(--white); line-height: 1.8; }
+.ready-sub { font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--yellow); animation: pulse-dot .8s ease-in-out infinite alternate; }
 @keyframes pulse-dot{from{opacity:.6}to{opacity:1}}
 .ready-info { display: flex; flex-direction: column; gap: 8px; width: min(340px, 92%); }
-.ready-line { display: flex; align-items: center; gap: 10px; background: var(–s2); border: 1px solid var(–bd); border-left: 3px solid var(–red); border-radius: 3px; padding: 10px 12px; }
+.ready-line { display: flex; align-items: center; gap: 10px; background: var(--s2); border: 1px solid var(--bd); border-left: 3px solid var(--red); border-radius: 3px; padding: 10px 12px; }
 .ready-line-icon { font-size: clamp(14px,4vw,18px); flex-shrink: 0; }
-.ready-line-txt { font-size: clamp(10px,2.8vw,13px); color: var(–tx2); text-align: left; }
-.ready-line-txt strong { color: var(–tx); }
-.ready-btn { background: var(–red); border: none; border-radius: 3px; padding: clamp(13px,3.5vw,16px) clamp(28px,8vw,38px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(9px,2.5vw,12px); color: #fff; cursor: pointer; letter-spacing: 2px; box-shadow: 0 4px 0 var(–rdk); margin-top: 12px; align-self: center; }
+.ready-line-txt { font-size: clamp(10px,2.8vw,13px); color: var(--tx2); text-align: left; }
+.ready-line-txt strong { color: var(--tx); }
+.ready-btn { background: var(--red); border: none; border-radius: 3px; padding: clamp(13px,3.5vw,16px) clamp(28px,8vw,38px); font-family: 'Press Start 2P', monospace; font-size: clamp(9px,2.5vw,12px); color: #fff; cursor: pointer; letter-spacing: 2px; box-shadow: 0 4px 0 var(--rdk); margin-top: 12px; align-self: center; }
 
 /* ===== GAME ===== */
 #screen-game { overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 20px; }
-.hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(–bd); gap: 8px; }
-.logo { font-family: ‘Press Start 2P’, monospace; font-size: clamp(8px,2.2vw,11px); line-height: 1.5; color: var(–white); }
-.logo em { color: var(–red); font-style: normal; }
+.hdr { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--bd); gap: 8px; }
+.logo { font-family: 'Press Start 2P', monospace; font-size: clamp(8px,2.2vw,11px); line-height: 1.5; color: var(--white); }
+.logo em { color: var(--red); font-style: normal; }
 .score-block { text-align: right; flex-shrink: 0; }
-.score-lbl { font-family: ‘Press Start 2P’, monospace; font-size: clamp(5px,1.3vw,7px); color: var(–tx2); letter-spacing: 1px; margin-bottom: 2px; }
-.score-val { font-family: ‘Orbitron’, sans-serif; font-weight: 900; font-size: clamp(16px,4.5vw,22px); color: var(–yellow); }
+.score-lbl { font-family: 'Press Start 2P', monospace; font-size: clamp(5px,1.3vw,7px); color: var(--tx2); letter-spacing: 1px; margin-bottom: 2px; }
+.score-val { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: clamp(16px,4.5vw,22px); color: var(--yellow); }
 
 .prog-dots { display: flex; gap: 5px; margin-bottom: 8px; }
-.dot { height: 3px; flex: 1; border-radius: 2px; background: var(–s3); transition: all .4s; }
-.dot.ok  { background: var(–ok); box-shadow: 0 0 5px var(–ok); }
-.dot.ko  { background: var(–ko); box-shadow: 0 0 5px var(–ko); }
-.dot.partial { background: var(–yellow); box-shadow: 0 0 5px var(–yellow); }
-.dot.cur { background: var(–yellow); animation: pulse-dot .8s ease-in-out infinite alternate; }
+.dot { height: 3px; flex: 1; border-radius: 2px; background: var(--s3); transition: all .4s; }
+.dot.ok  { background: var(--ok); box-shadow: 0 0 5px var(--ok); }
+.dot.ko  { background: var(--ko); box-shadow: 0 0 5px var(--ko); }
+.dot.partial { background: var(--yellow); box-shadow: 0 0 5px var(--yellow); }
+.dot.cur { background: var(--yellow); animation: pulse-dot .8s ease-in-out infinite alternate; }
 
 .timer-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
 .timer-lights { display: flex; gap: 4px; }
-.t-light { width: clamp(8px,2.5vw,12px); height: clamp(8px,2.5vw,12px); border-radius: 50%; background: var(–s3); border: 1px solid rgba(255,255,255,.1); transition: all .2s; }
-.t-light.on-green  { background: var(–ok);     box-shadow: 0 0 6px var(–ok); }
-.t-light.on-yellow { background: var(–yellow);  box-shadow: 0 0 6px var(–yellow); }
-.t-light.on-red    { background: var(–red);     box-shadow: 0 0 6px var(–red); animation: danger-flash .25s ease-in-out infinite alternate; }
+.t-light { width: clamp(8px,2.5vw,12px); height: clamp(8px,2.5vw,12px); border-radius: 50%; background: var(--s3); border: 1px solid rgba(255,255,255,.1); transition: all .2s; }
+.t-light.on-green  { background: var(--ok);     box-shadow: 0 0 6px var(--ok); }
+.t-light.on-yellow { background: var(--yellow);  box-shadow: 0 0 6px var(--yellow); }
+.t-light.on-red    { background: var(--red);     box-shadow: 0 0 6px var(--red); animation: danger-flash .25s ease-in-out infinite alternate; }
 @keyframes danger-flash{from{opacity:.6}to{opacity:1}}
-.timer-bar-bg { flex: 1; height: 4px; background: var(–s3); border-radius: 2px; overflow: hidden; }
-.timer-bar { height: 100%; border-radius: 2px; background: var(–ok); transition: width .1s linear, background .3s; }
-.timer-bar.warn   { background: var(–yellow); }
-.timer-bar.danger { background: var(–red); }
-.timer-lbl { font-family: ‘Orbitron’, sans-serif; font-size: clamp(11px,3vw,14px); font-weight: 700; color: var(–white); min-width: 24px; text-align: right; }
+.timer-bar-bg { flex: 1; height: 4px; background: var(--s3); border-radius: 2px; overflow: hidden; }
+.timer-bar { height: 100%; border-radius: 2px; background: var(--ok); transition: width .1s linear, background .3s; }
+.timer-bar.warn   { background: var(--yellow); }
+.timer-bar.danger { background: var(--red); }
+.timer-lbl { font-family: 'Orbitron', sans-serif; font-size: clamp(11px,3vw,14px); font-weight: 700; color: var(--white); min-width: 24px; text-align: right; }
 
 .streak-bar { text-align: center; margin-bottom: 6px; min-height: 22px; }
-.streak-badge { display: inline-block; font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); padding: 4px 10px; border-radius: 2px; letter-spacing: 1px; animation: streakPop .3s cubic-bezier(.22,1,.36,1); }
+.streak-badge { display: inline-block; font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); padding: 4px 10px; border-radius: 2px; letter-spacing: 1px; animation: streakPop .3s cubic-bezier(.22,1,.36,1); }
 @keyframes streakPop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
-.streak-badge.s2 { background: rgba(255,214,0,.12); border: 1px solid var(–yellow); color: var(–yellow); }
+.streak-badge.s2 { background: rgba(255,214,0,.12); border: 1px solid var(--yellow); color: var(--yellow); }
 .streak-badge.s3 { background: rgba(255,100,0,.12); border: 1px solid #FF6400; color: #FF6400; }
-.streak-badge.s4 { background: rgba(232,50,26,.15); border: 1px solid var(–red); color: var(–red); animation: streakPop .3s cubic-bezier(.22,1,.36,1), legendPulse .5s ease-in-out infinite alternate; }
+.streak-badge.s4 { background: rgba(232,50,26,.15); border: 1px solid var(--red); color: var(--red); animation: streakPop .3s cubic-bezier(.22,1,.36,1), legendPulse .5s ease-in-out infinite alternate; }
 @keyframes legendPulse{from{box-shadow:0 0 6px rgba(232,50,26,.3)}to{box-shadow:0 0 20px rgba(232,50,26,.8)}}
 
-.car-zone { width: 100%; border-radius: 4px; overflow: hidden; background: var(–s1); margin-bottom: 10px; position: relative; border: 2px solid var(–red); box-shadow: 0 0 16px rgba(232,50,26,.2); }
+.car-zone { width: 100%; border-radius: 4px; overflow: hidden; background: var(--s1); margin-bottom: 10px; position: relative; border: 2px solid var(--red); box-shadow: 0 0 16px rgba(232,50,26,.2); }
 .car-zone::before,.car-zone::after { display: none; }
+
 
 .car-zone img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; }
 .car-zone.shake { animation: shake .4s ease-in-out; }
@@ -229,168 +229,175 @@ letter-spacing: 2px; box-shadow: 0 4px 0 var(–rdk); margin-top: 12px;
 @keyframes slideIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
 .expired-overlay { position: absolute; inset: 0; background: rgba(8,8,15,.85); display: none; align-items: center; justify-content: center; }
 .expired-overlay.show { display: flex; }
-.expired-txt { font-family: ‘Press Start 2P’, monospace; font-size: clamp(12px,3.5vw,18px); color: var(–ko); text-shadow: 0 0 16px var(–ko); animation: glitch .15s infinite; text-align: center; line-height: 1.8; }
+.expired-txt { font-family: 'Press Start 2P', monospace; font-size: clamp(12px,3.5vw,18px); color: var(--ko); text-shadow: 0 0 16px var(--ko); animation: glitch .15s infinite; text-align: center; line-height: 1.8; }
 @keyframes glitch{0%,100%{transform:translate(0)}25%{transform:translate(-2px,1px)}75%{transform:translate(2px,-1px)}}
 
-.qlbl { font-family: ‘Press Start 2P’, monospace; font-size: clamp(6px,1.8vw,8px); color: var(–tx2); letter-spacing: 1px; margin-bottom: 7px; }
+.qlbl { font-family: 'Press Start 2P', monospace; font-size: clamp(6px,1.8vw,8px); color: var(--tx2); letter-spacing: 1px; margin-bottom: 7px; }
 .irow { display: flex; gap: 6px; margin-bottom: 8px; }
-.ainput { flex: 1; min-width: 0; background: var(–s1); border: 2px solid var(–bd2); border-radius: 4px; padding: 11px 12px; font-family: ‘DM Sans’, sans-serif; font-size: 16px; color: var(–tx); outline: none; }
-.ainput::placeholder { color: var(–tx3); }
-.ainput:focus { border-color: var(–red); }
-.ainput.aok { border-color: var(–ok); color: var(–ok); }
-.ainput.ako { border-color: var(–ko); color: var(–ko); }
-.ainput.apartial { border-color: var(–yellow); color: var(–yellow); }
-.sbtn { flex-shrink: 0; background: var(–red); border: none; border-radius: 4px; padding: 11px clamp(12px,3.5vw,18px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(8px,2.2vw,10px); color: #fff; cursor: pointer; box-shadow: 0 3px 0 var(–rdk); white-space: nowrap; }
-.sbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(–rdk); }
+.ainput { flex: 1; min-width: 0; background: var(--s1); border: 2px solid var(--bd2); border-radius: 4px; padding: 11px 12px; font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--tx); outline: none; }
+.ainput::placeholder { color: var(--tx3); }
+.ainput:focus { border-color: var(--red); }
+.ainput.aok { border-color: var(--ok); color: var(--ok); }
+.ainput.ako { border-color: var(--ko); color: var(--ko); }
+.ainput.apartial { border-color: var(--yellow); color: var(--yellow); }
+.sbtn { flex-shrink: 0; background: var(--red); border: none; border-radius: 4px; padding: 11px clamp(12px,3.5vw,18px); font-family: 'Press Start 2P', monospace; font-size: clamp(8px,2.2vw,10px); color: #fff; cursor: pointer; box-shadow: 0 3px 0 var(--rdk); white-space: nowrap; }
+.sbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--rdk); }
 .sbtn:disabled { opacity: .25; cursor: not-allowed; }
 
 .hint-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-.hint-btn { background: transparent; border: 1.5px solid var(–yellow); border-radius: 3px; padding: clamp(5px,1.5vw,7px) clamp(8px,2.5vw,14px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(6px,1.8vw,8px); color: var(–yellow); cursor: pointer; white-space: nowrap; }
+.hint-btn { background: transparent; border: 1.5px solid var(--yellow); border-radius: 3px; padding: clamp(5px,1.5vw,7px) clamp(8px,2.5vw,14px); font-family: 'Press Start 2P', monospace; font-size: clamp(6px,1.8vw,8px); color: var(--yellow); cursor: pointer; white-space: nowrap; }
 .hint-btn:disabled { opacity: .25; cursor: not-allowed; }
-.hint-txt { font-family: ‘Orbitron’, sans-serif; font-size: clamp(11px,3vw,14px); color: var(–yellow); letter-spacing: 3px; }
+.hint-txt { font-family: 'Orbitron', sans-serif; font-size: clamp(11px,3vw,14px); color: var(--yellow); letter-spacing: 3px; }
 
-.fb { border-radius: 4px; padding: 9px 12px; margin-bottom: 8px; font-size: clamp(10px,2.8vw,13px); font-family: ‘Orbitron’, sans-serif; font-weight: 600; letter-spacing: 1px; display: none; }
+.fb { border-radius: 4px; padding: 9px 12px; margin-bottom: 8px; font-size: clamp(10px,2.8vw,13px); font-family: 'Orbitron', sans-serif; font-weight: 600; letter-spacing: 1px; display: none; }
 .fb.show { display: block; }
-.fb.ok { background: rgba(0,204,102,.08); border: 1px solid rgba(0,204,102,.25); color: var(–ok); }
-.fb.ko { background: rgba(232,50,26,.08); border: 1px solid rgba(232,50,26,.25); color: var(–ko); }
-.fb.partial { background: rgba(255,214,0,.08); border: 1px solid rgba(255,214,0,.25); color: var(–yellow); }
+.fb.ok { background: rgba(0,204,102,.08); border: 1px solid rgba(0,204,102,.25); color: var(--ok); }
+.fb.ko { background: rgba(232,50,26,.08); border: 1px solid rgba(232,50,26,.25); color: var(--ko); }
+.fb.partial { background: rgba(255,214,0,.08); border: 1px solid rgba(255,214,0,.25); color: var(--yellow); }
 
-.info-card { display: none; background: var(–s2); border: 1px solid var(–bd2); border-left: 3px solid var(–red); border-radius: 3px; padding: 12px 14px; margin-bottom: 10px; }
+.info-card { display: none; background: var(--s2); border: 1px solid var(--bd2); border-left: 3px solid var(--red); border-radius: 3px; padding: 12px 14px; margin-bottom: 10px; }
 .info-card.show { display: block; animation: slideIn .3s ease; }
-.info-car-name { font-family: ‘Orbitron’, sans-serif; font-weight: 800; font-size: clamp(13px,3.5vw,17px); letter-spacing: 2px; color: var(–white); margin-bottom: 4px; }
-.info-gen { font-size: clamp(9px,2.5vw,11px); color: var(–tx2); margin-bottom: 8px; border-bottom: 1px solid var(–bd); padding-bottom: 7px; font-family: ‘Orbitron’, sans-serif; }
+.info-car-name { font-family: 'Orbitron', sans-serif; font-weight: 800; font-size: clamp(13px,3.5vw,17px); letter-spacing: 2px; color: var(--white); margin-bottom: 4px; }
+.info-gen { font-size: clamp(9px,2.5vw,11px); color: var(--tx2); margin-bottom: 8px; border-bottom: 1px solid var(--bd); padding-bottom: 7px; font-family: 'Orbitron', sans-serif; }
 .info-facts { display: flex; flex-direction: column; gap: 4px; }
-.info-fact { font-size: clamp(11px,3vw,13px); color: var(–tx2); line-height: 1.5; }
-.info-pts { font-family: ‘Orbitron’, sans-serif; font-size: clamp(9px,2.5vw,11px); color: var(–yellow); margin-top: 7px; padding-top: 7px; border-top: 1px solid var(–bd); }
+.info-fact { font-size: clamp(11px,3vw,13px); color: var(--tx2); line-height: 1.5; }
+.info-pts { font-family: 'Orbitron', sans-serif; font-size: clamp(9px,2.5vw,11px); color: var(--yellow); margin-top: 7px; padding-top: 7px; border-top: 1px solid var(--bd); }
 
-.nbtn { width: 100%; background: transparent; border: 2px solid var(–red); border-radius: 3px; padding: clamp(10px,3vw,13px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–red); cursor: pointer; display: none; letter-spacing: 1px; box-shadow: 0 3px 0 var(–rdk); }
-.nbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(–rdk); }
+.nbtn { width: 100%; background: transparent; border: 2px solid var(--red); border-radius: 3px; padding: clamp(10px,3vw,13px); font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--red); cursor: pointer; display: none; letter-spacing: 1px; box-shadow: 0 3px 0 var(--rdk); }
+.nbtn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--rdk); }
 .nbtn.show { display: block; }
-.menu-back-btn { width: 100%; background: rgba(255,255,255,.05); border: 2px solid #fff; border-radius: 3px; padding: clamp(7px,2vw,9px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(6px,1.8vw,8px); color: #fff; cursor: pointer; margin-top: 7px; letter-spacing: 1px; }
+.menu-back-btn { width: 100%; background: rgba(255,255,255,.05); border: 2px solid #fff; border-radius: 3px; padding: clamp(7px,2vw,9px); font-family: 'Press Start 2P', monospace; font-size: clamp(6px,1.8vw,8px); color: #fff; cursor: pointer; margin-top: 7px; letter-spacing: 1px; }
 
 /* ===== END ===== */
 #screen-end { overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 20px; scrollbar-width: none; } #screen-end::-webkit-scrollbar { display: none; }
 .end-flag { font-size: clamp(28px,8vw,40px); text-align: center; margin-bottom: 6px; }
-.end-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(11px,3vw,14px); color: var(–white); text-align: center; line-height: 1.8; margin-bottom: 6px; }
-.end-pseudo { font-family: ‘Orbitron’, sans-serif; font-size: clamp(10px,2.8vw,13px); color: var(–tx2); text-align: center; margin-bottom: 10px; letter-spacing: 2px; }
-.end-pseudo span { color: var(–red); }
-.end-score { font-family: ‘Orbitron’, sans-serif; font-weight: 900; font-size: clamp(48px,13vw,72px); color: var(–yellow); line-height: 1; text-align: center; margin-bottom: 4px; }
-.end-score .sep { font-size: clamp(24px,7vw,36px); color: var(–tx3); margin: 0 4px; }
-.end-score .maxsc { font-size: clamp(24px,7vw,36px); color: var(–tx3); }
-.end-pct { font-family: ‘Orbitron’, sans-serif; font-size: clamp(10px,2.8vw,12px); color: var(–tx2); text-align: center; margin-bottom: 14px; letter-spacing: 2px; }
+.end-title { font-family: 'Press Start 2P', monospace; font-size: clamp(11px,3vw,14px); color: var(--white); text-align: center; line-height: 1.8; margin-bottom: 6px; }
+.end-pseudo { font-family: 'Orbitron', sans-serif; font-size: clamp(10px,2.8vw,13px); color: var(--tx2); text-align: center; margin-bottom: 10px; letter-spacing: 2px; }
+.end-pseudo span { color: var(--red); }
+.end-score { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: clamp(48px,13vw,72px); color: var(--yellow); line-height: 1; text-align: center; margin-bottom: 4px; }
+.end-score .sep { font-size: clamp(24px,7vw,36px); color: var(--tx3); margin: 0 4px; }
+.end-score .maxsc { font-size: clamp(24px,7vw,36px); color: var(--tx3); }
+.end-pct { font-family: 'Orbitron', sans-serif; font-size: clamp(10px,2.8vw,12px); color: var(--tx2); text-align: center; margin-bottom: 14px; letter-spacing: 2px; }
 .end-recap { width: 100%; display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
-.recap-item { background: var(–s2); border: 1px solid var(–bd); border-radius: 3px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.recap-item { background: var(--s2); border: 1px solid var(--bd); border-radius: 3px; padding: 8px 12px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .recap-left { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .recap-thumb { width: clamp(50px,13vw,72px); height: clamp(32px,8vw,45px); border-radius: 3px; overflow: hidden; flex-shrink: 0; position: relative; border: 2px solid; }
 .recap-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .recap-thumb-badge { position: absolute; top: 2px; right: 2px; width: 14px; height: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 700; color: #000; }
 .recap-car { text-align: left; min-width: 0; }
-.recap-name { font-family: ‘Orbitron’, sans-serif; font-size: clamp(9px,2.5vw,12px); font-weight: 700; color: var(–tx); }
-.recap-answer { font-size: clamp(9px,2.5vw,11px); color: var(–tx2); margin-top: 2px; }
-.recap-hint { font-size: clamp(8px,2.2vw,10px); color: var(–yellow); margin-top: 2px; }
+.recap-name { font-family: 'Orbitron', sans-serif; font-size: clamp(9px,2.5vw,12px); font-weight: 700; color: var(--tx); }
+.recap-answer { font-size: clamp(9px,2.5vw,11px); color: var(--tx2); margin-top: 2px; }
+.recap-hint { font-size: clamp(8px,2.2vw,10px); color: var(--yellow); margin-top: 2px; }
 .recap-right { text-align: right; flex-shrink: 0; }
-.recap-pts { font-family: ‘Orbitron’, sans-serif; font-size: clamp(12px,3.5vw,14px); font-weight: 700; color: var(–yellow); }
-.emsg { font-family: ‘Press Start 2P’, monospace; font-size: clamp(6px,1.8vw,8px); color: var(–tx2); text-align: center; margin-bottom: 16px; line-height: 2.2; letter-spacing: 1px; }
+.recap-pts { font-family: 'Orbitron', sans-serif; font-size: clamp(12px,3.5vw,14px); font-weight: 700; color: var(--yellow); }
+.emsg { font-family: 'Press Start 2P', monospace; font-size: clamp(6px,1.8vw,8px); color: var(--tx2); text-align: center; margin-bottom: 16px; line-height: 2.2; letter-spacing: 1px; }
 .end-btns { display: flex; flex-direction: column; gap: 10px; width: min(280px, 88%); margin: 0 auto; }
-.end-btn { background: transparent; border: 2px solid; border-radius: 3px; padding: clamp(11px,3vw,14px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); letter-spacing: 2px; cursor: pointer; }
-.end-btn.replay { border-color: var(–red); color: var(–red); box-shadow: 0 3px 0 var(–rdk); }
-.end-btn.share  { border-color: var(–yellow); color: var(–yellow); }
-.end-btn.home   { border-color: var(–tx3); color: var(–tx2); }
+.end-btn { background: transparent; border: 2px solid; border-radius: 3px; padding: clamp(11px,3vw,14px); font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); letter-spacing: 2px; cursor: pointer; }
+.end-btn.replay { border-color: var(--red); color: var(--red); box-shadow: 0 3px 0 var(--rdk); }
+.end-btn.share  { border-color: var(--yellow); color: var(--yellow); }
+.end-btn.home   { border-color: var(--tx3); color: var(--tx2); }
 
 /* ===== SCORES ===== */
 #screen-scores { overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 20px; }
 .scores-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; padding: 16px 0; }
-.scores-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(12px,3.5vw,16px); color: var(–yellow); text-shadow: 0 0 10px var(–yellow); line-height: 1.8; }
-.scores-sub { font-family: ‘Press Start 2P’, monospace; font-size: clamp(6px,1.8vw,8px); color: var(–tx2); letter-spacing: 2px; }
+.scores-title { font-family: 'Press Start 2P', monospace; font-size: clamp(12px,3.5vw,16px); color: var(--yellow); text-shadow: 0 0 10px var(--yellow); line-height: 1.8; }
+.scores-sub { font-family: 'Press Start 2P', monospace; font-size: clamp(6px,1.8vw,8px); color: var(--tx2); letter-spacing: 2px; }
 .scores-table { width: 100%; max-width: 480px; }
-.score-row { display: flex; align-items: center; gap: 8px; background: var(–s2); border: 1px solid var(–bd); border-radius: 3px; padding: 8px 12px; margin-bottom: 5px; }
-.score-rank { font-family: ‘Orbitron’, sans-serif; font-weight: 900; font-size: clamp(14px,4vw,18px); min-width: 28px; text-align: center; }
+.score-row { display: flex; align-items: center; gap: 8px; background: var(--s2); border: 1px solid var(--bd); border-radius: 3px; padding: 8px 12px; margin-bottom: 5px; }
+.score-rank { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: clamp(14px,4vw,18px); min-width: 28px; text-align: center; }
 .score-rank.gold   { color: #FFD600; }
 .score-rank.silver { color: #C0C0C0; }
 .score-rank.bronze { color: #CD7F32; }
-.score-rank.normal { color: var(–tx3); }
+.score-rank.normal { color: var(--tx3); }
 .score-info { flex: 1; text-align: left; }
-.score-pseudo { font-family: ‘Orbitron’, sans-serif; font-size: clamp(10px,2.8vw,13px); font-weight: 700; color: var(–tx); }
-.score-date { font-size: clamp(8px,2.2vw,10px); color: var(–tx3); margin-top: 2px; }
-.score-pts { font-family: ‘Orbitron’, sans-serif; font-weight: 900; font-size: clamp(13px,3.5vw,16px); color: var(–yellow); }
-.score-max { font-size: clamp(8px,2.2vw,10px); color: var(–tx3); }
-.scores-empty { color: var(–tx2); font-size: clamp(12px,3.5vw,14px); line-height: 2; }
-.scores-back-btn { background: transparent; border: 2px solid var(–red); border-radius: 3px; padding: clamp(11px,3vw,13px) clamp(20px,5vw,28px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–red); cursor: pointer; letter-spacing: 2px; }
+.score-pseudo { font-family: 'Orbitron', sans-serif; font-size: clamp(10px,2.8vw,13px); font-weight: 700; color: var(--tx); }
+.score-date { font-size: clamp(8px,2.2vw,10px); color: var(--tx3); margin-top: 2px; }
+.score-pts { font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: clamp(13px,3.5vw,16px); color: var(--yellow); }
+.score-max { font-size: clamp(8px,2.2vw,10px); color: var(--tx3); }
+.scores-empty { color: var(--tx2); font-size: clamp(12px,3.5vw,14px); line-height: 2; }
+.scores-back-btn { background: transparent; border: 2px solid var(--red); border-radius: 3px; padding: clamp(11px,3vw,13px) clamp(20px,5vw,28px); font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--red); cursor: pointer; letter-spacing: 2px; }
 
 /* ===== CONFIRM QUIT ===== */
 #screen-confirm-quit { align-items: center; justify-content: center; gap: 18px; text-align: center; padding: 20px; }
 .confirm-wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
-.confirm-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(12px,3.5vw,16px); color: var(–yellow); line-height: 1.8; }
-.confirm-msg { font-family: ‘Press Start 2P’, monospace; font-size: clamp(6px,1.8vw,8px); color: var(–tx2); line-height: 2.2; }
+.confirm-title { font-family: 'Press Start 2P', monospace; font-size: clamp(12px,3.5vw,16px); color: var(--yellow); line-height: 1.8; }
+.confirm-msg { font-family: 'Press Start 2P', monospace; font-size: clamp(6px,1.8vw,8px); color: var(--tx2); line-height: 2.2; }
 .confirm-btns { display: flex; flex-direction: column; gap: 10px; width: min(280px, 88%); }
-.confirm-btn-yes { background: transparent; border: 2px solid var(–red); border-radius: 3px; padding: clamp(12px,3vw,14px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–red); cursor: pointer; letter-spacing: 2px; }
-.confirm-btn-no  { background: var(–ok); border: none; border-radius: 3px; padding: clamp(12px,3vw,14px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: #000; cursor: pointer; letter-spacing: 2px; }
+.confirm-btn-yes { background: transparent; border: 2px solid var(--red); border-radius: 3px; padding: clamp(12px,3vw,14px); font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--red); cursor: pointer; letter-spacing: 2px; }
+.confirm-btn-no  { background: var(--ok); border: none; border-radius: 3px; padding: clamp(12px,3vw,14px); font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: #000; cursor: pointer; letter-spacing: 2px; }
 
 /* ===== MODALS ===== */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,14,.94); z-index: 100; align-items: flex-start; justify-content: center; padding: 16px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .modal-overlay.show { display: flex; }
-.modal { background: var(–s2); border: 2px solid var(–bd2); border-radius: 4px; padding: 22px 18px; max-width: 480px; width: 100%; margin: auto; }
-.modal-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(9px,2.5vw,11px); letter-spacing: 2px; margin-bottom: 18px; line-height: 1.8; }
-.modal-title.y { color: var(–yellow); }
-.modal-title.b { color: var(–tx2); }
+.modal { background: var(--s2); border: 2px solid var(--bd2); border-radius: 4px; padding: 22px 18px; max-width: 480px; width: 100%; margin: auto; }
+.modal-title { font-family: 'Press Start 2P', monospace; font-size: clamp(9px,2.5vw,11px); letter-spacing: 2px; margin-bottom: 18px; line-height: 1.8; }
+.modal-title.y { color: var(--yellow); }
+.modal-title.b { color: var(--tx2); }
 .rules-section { margin-bottom: 14px; }
-.rules-section-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(5px,1.5vw,7px); color: var(–red); letter-spacing: 2px; margin-bottom: 8px; }
+.rules-section-title { font-family: 'Press Start 2P', monospace; font-size: clamp(5px,1.5vw,7px); color: var(--red); letter-spacing: 2px; margin-bottom: 8px; }
 .rules-list { display: flex; flex-direction: column; gap: 8px; }
 .rule-item { display: flex; gap: 8px; align-items: flex-start; }
 .rule-icon { font-size: clamp(12px,3.5vw,16px); flex-shrink: 0; }
-.rule-text { font-size: clamp(11px,3vw,13px); color: var(–tx2); line-height: 1.6; }
-.rule-text strong { color: var(–tx); }
-.rules-divider { height: 1px; background: var(–bd); margin: 12px 0; }
+.rule-text { font-size: clamp(11px,3vw,13px); color: var(--tx2); line-height: 1.6; }
+.rule-text strong { color: var(--tx); }
+.rules-divider { height: 1px; background: var(--bd); margin: 12px 0; }
 .credits-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
-.credit-item { border-left: 3px solid var(–red); padding-left: 12px; }
-.credit-role { font-family: ‘Press Start 2P’, monospace; font-size: clamp(5px,1.5vw,7px); color: var(–red); letter-spacing: 1px; margin-bottom: 4px; }
-.credit-name { font-size: clamp(12px,3.5vw,14px); color: var(–tx); font-weight: 500; }
-.credit-sub { font-size: clamp(10px,2.8vw,12px); color: var(–tx2); margin-top: 2px; }
-.modal-close { width: 100%; background: transparent; border: 2px solid var(–ko); border-radius: 3px; padding: clamp(10px,3vw,13px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–ko); cursor: pointer; letter-spacing: 2px; margin-top: 6px; }
+.credit-item { border-left: 3px solid var(--red); padding-left: 12px; }
+.credit-role { font-family: 'Press Start 2P', monospace; font-size: clamp(5px,1.5vw,7px); color: var(--red); letter-spacing: 1px; margin-bottom: 4px; }
+.credit-name { font-size: clamp(12px,3.5vw,14px); color: var(--tx); font-weight: 500; }
+.credit-sub { font-size: clamp(10px,2.8vw,12px); color: var(--tx2); margin-top: 2px; }
+.modal-close { width: 100%; background: transparent; border: 2px solid var(--ko); border-radius: 3px; padding: clamp(10px,3vw,13px); font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--ko); cursor: pointer; letter-spacing: 2px; margin-top: 6px; }
 
 /* STREAK OVERLAY */
 .streak-overlay { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 500; }
-.streak-big { font-family: ‘Press Start 2P’, monospace; font-size: clamp(16px,5vw,24px); text-align: center; line-height: 1.8; opacity: 0; transform: scale(.5); transition: all .2s cubic-bezier(.22,1,.36,1); }
+.streak-big { font-family: 'Press Start 2P', monospace; font-size: clamp(16px,5vw,24px); text-align: center; line-height: 1.8; opacity: 0; transform: scale(.5); transition: all .2s cubic-bezier(.22,1,.36,1); }
 .streak-big.show { opacity: 1; transform: scale(1); }
 .streak-big.hide { opacity: 0; transform: scale(1.3); }
 
 .game-bottom-row { display: flex; gap: 8px; align-items: center; margin-top: 7px; }
-.menu-back-btn-small { flex: 1; background: rgba(255,255,255,.05); border: 2px solid #fff; border-radius: 3px; padding: clamp(6px,1.8vw,9px); font-family: ‘Press Start 2P’, monospace; font-size: clamp(5px,1.5vw,7px); color: #fff; cursor: pointer; letter-spacing: 1px; }
-.volume-btn-game { width: clamp(34px,9vw,42px); height: clamp(34px,9vw,42px); background: var(–s2); border: 2px solid var(–bd2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; position: relative; }
+.menu-back-btn-small { flex: 1; background: rgba(255,255,255,.05); border: 2px solid #fff; border-radius: 3px; padding: clamp(6px,1.8vw,9px); font-family: 'Press Start 2P', monospace; font-size: clamp(5px,1.5vw,7px); color: #fff; cursor: pointer; letter-spacing: 1px; }
+.volume-btn-game { width: clamp(34px,9vw,42px); height: clamp(34px,9vw,42px); background: var(--s2); border: 2px solid var(--bd2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; position: relative; }
 .volume-btn-game svg { pointer-events: none; width: 55%; height: 55%; }
+
 
 /* Bloquer zoom */
 html { touch-action: pan-x pan-y; -ms-touch-action: pan-x pan-y; }
 body { touch-action: pan-x pan-y; }
 
+
 /* ===== MODE DE JEU ===== */
 #screen-mode { align-items: center; justify-content: center; gap: 16px; text-align: center; padding: 0 12px; }
 .mode-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%; }
-.mode-title { font-family: ‘Press Start 2P’, monospace; font-size: clamp(14px,4vw,18px); color: var(–white); line-height: 1.8; text-shadow: 0 2px 0 #000; }
-.mode-sub { font-size: var(–fs-base); color: var(–tx2); margin-bottom: 4px; }
+.mode-title { font-family: 'Press Start 2P', monospace; font-size: clamp(14px,4vw,18px); color: var(--white); line-height: 1.8; text-shadow: 0 2px 0 #000; }
+.mode-sub { font-size: var(--fs-base); color: var(--tx2); margin-bottom: 4px; }
 .mode-list { display: flex; flex-direction: column; gap: 12px; width: min(360px, 92%); }
-.mode-btn { background: var(–s2); border: 2px solid var(–red); border-radius: 4px; padding: clamp(14px,4vw,20px) 16px; cursor: pointer; transition: all .15s; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; box-shadow: 0 0 14px rgba(232,50,26,.15); }
+.mode-btn { background: var(--s2); border: 2px solid var(--red); border-radius: 4px; padding: clamp(14px,4vw,20px) 16px; cursor: pointer; transition: all .15s; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; box-shadow: 0 0 14px rgba(232,50,26,.15); }
 .mode-btn:hover { background: rgba(232,50,26,.1); box-shadow: 0 0 24px rgba(232,50,26,.35); transform: scale(1.02); }
 .mode-btn:active { transform: scale(.98); }
-.mode-endless-btn { border-color: var(–yellow); box-shadow: 0 0 14px rgba(255,214,0,.15); }
+.mode-endless-btn { border-color: var(--yellow); box-shadow: 0 0 14px rgba(255,214,0,.15); }
 .mode-endless-btn:hover { background: rgba(255,214,0,.08); box-shadow: 0 0 24px rgba(255,214,0,.35); }
 .mode-icon { font-size: clamp(26px,7vw,34px); }
-.mode-name { font-family: ‘Press Start 2P’, monospace; font-size: clamp(8px,2.2vw,11px); color: var(–tx); letter-spacing: 1px; }
-.mode-btn:first-child .mode-name { color: var(–red); }
-.mode-endless-btn .mode-name { color: var(–yellow); }
-.mode-desc { font-size: clamp(10px,2.8vw,12px); color: var(–tx2); line-height: 1.7; }
-.mode-back-btn { background: transparent; border: 2px solid var(–tx3); border-radius: 3px; padding: 10px 20px; font-family: ‘Press Start 2P’, monospace; font-size: clamp(7px,2vw,9px); color: var(–tx2); cursor: pointer; margin-top: 6px; }
+.mode-name { font-family: 'Press Start 2P', monospace; font-size: clamp(8px,2.2vw,11px); color: var(--tx); letter-spacing: 1px; }
+.mode-btn:first-child .mode-name { color: var(--red); }
+.mode-endless-btn .mode-name { color: var(--yellow); }
+.mode-desc { font-size: clamp(10px,2.8vw,12px); color: var(--tx2); line-height: 1.7; }
+.mode-back-btn { background: transparent; border: 2px solid var(--tx3); border-radius: 3px; padding: 10px 20px; font-family: 'Press Start 2P', monospace; font-size: clamp(7px,2vw,9px); color: var(--tx2); cursor: pointer; margin-top: 6px; }
+
 
 @keyframes countPulse{from{transform:scale(1);opacity:1}to{transform:scale(1.2);opacity:0.85}}
 
-.home-affiche { width:100%; overflow:hidden; padding:8px 0; font-family:‘Press Start 2P’,monospace; font-size:clamp(6px,1.8vw,8px); color:var(–yellow); line-height:1.8; letter-spacing:1px; white-space:nowrap; }
+
+.home-affiche { width:100%; overflow:hidden; padding:8px 0; font-family:'Press Start 2P',monospace; font-size:clamp(6px,1.8vw,8px); color:var(--yellow); line-height:1.8; letter-spacing:1px; white-space:nowrap; }
 .home-affiche-inner { display:inline-block; animation:ticker 22s linear infinite; }
 @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-25%)} }
+
+
+
 
 @keyframes rotatePulse{0%,100%{transform:rotate(-90deg)}50%{transform:rotate(0deg)}}
 
 @media screen and (max-width: 440px) {
-.version-badge { left: 16px !important; }
+  .version-badge { left: 16px !important; }
 }
 
 </style>
@@ -454,7 +461,7 @@ body { touch-action: pan-x pan-y; }
 <div id="landscape-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:#08080F;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px;">
   <div style="font-size:48px;animation:rotatePulse 1.5s ease-in-out infinite">📱</div>
   <div style="font-family:'Press Start 2P',monospace;font-size:clamp(8px,2.5vw,11px);color:var(--yellow);line-height:2.2;letter-spacing:1px">RETOURNE TON<br>TÉLÉPHONE !</div>
-
+  
 </div>
 
 <div id="app">
@@ -477,88 +484,84 @@ body { touch-action: pan-x pan-y; }
 </button>
 
 <!-- HOME -->
-
 <div class="screen active" id="screen-home">
   <div class="version-badge">v0.9.9 Alpha</div>
   <div class="home-affiche"><span class="home-affiche-inner">📲 Installe l'app sur ton téléphone ! &nbsp;▶&nbsp; Appuie sur "Partager" puis "Sur l'écran d'accueil" &nbsp;•&nbsp; Retrouve Guess The Car en un clic ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📲 Installe l'app sur ton téléphone ! &nbsp;▶&nbsp; Appuie sur "Partager" puis "Sur l'écran d'accueil" &nbsp;•&nbsp; Retrouve Guess The Car en un clic ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📲 Installe l'app sur ton téléphone ! &nbsp;▶&nbsp; Appuie sur "Partager" puis "Sur l'écran d'accueil" &nbsp;•&nbsp; Retrouve Guess The Car en un clic ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;📲 Installe l'app sur ton téléphone ! &nbsp;▶&nbsp; Appuie sur "Partager" puis "Sur l'écran d'accueil" &nbsp;•&nbsp; Retrouve Guess The Car en un clic ! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
   <div class="home-wrap">
 
-```
-<div style="position:relative;display:inline-block;width:100%;max-width:300px">
-  <div class="exhaust-smoke"><div class="smoke-p"></div><div class="smoke-p"></div><div class="smoke-p"></div></div>
-  <svg class="ferrari-pixel" style="margin-bottom:0;width:100%;max-width:340px;height:auto;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 160 55" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-  <!-- Aileron avant -->
-  <rect x="2" y="36" width="24" height="3" fill="#CC1100"/>
-  <rect x="5" y="32" width="16" height="5" fill="#CC1100"/>
-  <!-- Nez pointu -->
-  <rect x="8" y="26" width="18" height="8" fill="#DD2200"/>
-  <!-- Corps principal -->
-  <rect x="18" y="19" width="118" height="14" fill="#CC1100"/>
-  <rect x="22" y="15" width="100" height="6" fill="#DD2200"/>
-  <!-- Prolongement arrière corps -->
-  <rect x="118" y="22" width="18" height="8" fill="#CC1100"/>
-  <!-- Cockpit -->
-  <rect x="55" y="10" width="32" height="11" fill="#111"/>
-  <rect x="59" y="7" width="24" height="6" fill="#1a1a2e"/>
-  <!-- Halo -->
-  <rect x="56" y="7" width="3" height="8" fill="#999"/>
-  <rect x="80" y="7" width="3" height="8" fill="#999"/>
-  <rect x="59" y="7" width="22" height="2" fill="#AAA"/>
-  <!-- Aileron arrière VU DE CÔTÉ = T rouge
-       barre horizontale en haut -->
-  <rect x="118" y="8" width="22" height="3" fill="#EE3311"/>
-  <!-- montant vertical unique au centre -->
-  <rect x="127" y="11" width="3" height="10" fill="#CC1100"/>
-  <!-- Sidepods -->
-  <rect x="48" y="27" width="54" height="6" fill="#BB0F00"/>
-  <!-- Roues avant -->
-  <rect x="6" y="36" width="16" height="13" rx="1" fill="#111"/>
-  <rect x="8" y="38" width="12" height="9" fill="#222"/>
-  <rect x="11" y="40" width="6" height="5" fill="#444"/>
-  <!-- Roues arrière -->
-  <rect x="102" y="36" width="18" height="13" rx="1" fill="#111"/>
-  <rect x="104" y="38" width="14" height="9" fill="#222"/>
-  <rect x="107" y="40" width="8" height="5" fill="#444"/>
-  <!-- Détails jaunes -->
-  <rect x="20" y="22" width="3" height="3" fill="#FFD600"/>
-  <rect x="32" y="19" width="2" height="2" fill="#FFD600"/>
-  <!-- Flammes échappement -->
-  <rect x="138" y="27" width="3" height="3" fill="#FF6600"/>
-</svg>
-</div>
+    <div style="position:relative;display:inline-block;width:100%;max-width:300px">
+      <div class="exhaust-smoke"><div class="smoke-p"></div><div class="smoke-p"></div><div class="smoke-p"></div></div>
+      <svg class="ferrari-pixel" style="margin-bottom:0;width:100%;max-width:340px;height:auto;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 160 55" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+      <!-- Aileron avant -->
+      <rect x="2" y="36" width="24" height="3" fill="#CC1100"/>
+      <rect x="5" y="32" width="16" height="5" fill="#CC1100"/>
+      <!-- Nez pointu -->
+      <rect x="8" y="26" width="18" height="8" fill="#DD2200"/>
+      <!-- Corps principal -->
+      <rect x="18" y="19" width="118" height="14" fill="#CC1100"/>
+      <rect x="22" y="15" width="100" height="6" fill="#DD2200"/>
+      <!-- Prolongement arrière corps -->
+      <rect x="118" y="22" width="18" height="8" fill="#CC1100"/>
+      <!-- Cockpit -->
+      <rect x="55" y="10" width="32" height="11" fill="#111"/>
+      <rect x="59" y="7" width="24" height="6" fill="#1a1a2e"/>
+      <!-- Halo -->
+      <rect x="56" y="7" width="3" height="8" fill="#999"/>
+      <rect x="80" y="7" width="3" height="8" fill="#999"/>
+      <rect x="59" y="7" width="22" height="2" fill="#AAA"/>
+      <!-- Aileron arrière VU DE CÔTÉ = T rouge
+           barre horizontale en haut -->
+      <rect x="118" y="8" width="22" height="3" fill="#EE3311"/>
+      <!-- montant vertical unique au centre -->
+      <rect x="127" y="11" width="3" height="10" fill="#CC1100"/>
+      <!-- Sidepods -->
+      <rect x="48" y="27" width="54" height="6" fill="#BB0F00"/>
+      <!-- Roues avant -->
+      <rect x="6" y="36" width="16" height="13" rx="1" fill="#111"/>
+      <rect x="8" y="38" width="12" height="9" fill="#222"/>
+      <rect x="11" y="40" width="6" height="5" fill="#444"/>
+      <!-- Roues arrière -->
+      <rect x="102" y="36" width="18" height="13" rx="1" fill="#111"/>
+      <rect x="104" y="38" width="14" height="9" fill="#222"/>
+      <rect x="107" y="40" width="8" height="5" fill="#444"/>
+      <!-- Détails jaunes -->
+      <rect x="20" y="22" width="3" height="3" fill="#FFD600"/>
+      <rect x="32" y="19" width="2" height="2" fill="#FFD600"/>
+      <!-- Flammes échappement -->
+      <rect x="138" y="27" width="3" height="3" fill="#FF6600"/>
+    </svg>
+    </div>
 
-<div class="home-logo">
-  <span class="line1">🏎 ARCADE RACING QUIZ</span>
-  <span class="line2">GUESS<br>THE <em>CAR</em></span>
-  <span class="line3">▶ PRÊT À PRENDRE LE VOLANT ? ◀</span>
-</div>
+    <div class="home-logo">
+      <span class="line1">🏎 ARCADE RACING QUIZ</span>
+      <span class="line2">GUESS<br>THE <em>CAR</em></span>
+      <span class="line3">▶ PRÊT À PRENDRE LE VOLANT ? ◀</span>
+    </div>
 
-<div class="menu-btns">
-  <div style="background:transparent;border:2px solid var(--tx3);border-radius:4px;padding:16px 24px;font-family:'Press Start 2P',monospace;font-size:11px;letter-spacing:2px;color:var(--tx3);opacity:0.6;cursor:not-allowed;width:100%;text-align:center;box-sizing:border-box;">🗺️ CAMPAGNE<br><span style="font-size:0.6em;opacity:0.8;letter-spacing:1px">Bientôt disponible !</span></div>
-  <button class="menu-btn play" id="btn-play">🏎️ PARTIE RAPIDE</button>
-  <button class="menu-btn rules" id="btn-rules">❓ COMMENT JOUER</button>
-  <button class="menu-btn scores" id="btn-scores">🏆 SCOREBOARD</button>
-  <button class="menu-btn credits" id="btn-credits">★ CRÉDITS</button>
-</div>
+    <div class="menu-btns">
+      <div style="background:transparent;border:2px solid var(--tx3);border-radius:4px;padding:16px 24px;font-family:'Press Start 2P',monospace;font-size:11px;letter-spacing:2px;color:var(--tx3);opacity:0.6;cursor:not-allowed;width:100%;text-align:center;box-sizing:border-box;">🗺️ CAMPAGNE<br><span style="font-size:0.6em;opacity:0.8;letter-spacing:1px">Bientôt disponible !</span></div>
+      <button class="menu-btn play" id="btn-play">🏎️ PARTIE RAPIDE</button>
+      <button class="menu-btn rules" id="btn-rules">❓ COMMENT JOUER</button>
+      <button class="menu-btn scores" id="btn-scores">🏆 SCOREBOARD</button>
+      <button class="menu-btn credits" id="btn-credits">★ CRÉDITS</button>
+    </div>
 
-<div class="racing-scene" id="racing-scene" style="width:450px;margin:8px -16px 0;height:100px">
-  <div class="sky-line"></div>
-  <div class="road">
-    <div class="road-line"></div>
-    <div class="road-line"></div>
-    <div class="road-line"></div>
-    <div class="road-line"></div>
-    <div class="road-top"></div>
-    <div class="road-kerb"></div>
-  </div>
-</div>
-```
+    <div class="racing-scene" id="racing-scene" style="width:450px;margin:8px -16px 0;height:100px">
+      <div class="sky-line"></div>
+      <div class="road">
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-line"></div>
+        <div class="road-top"></div>
+        <div class="road-kerb"></div>
+      </div>
+    </div>
 
   </div>
 </div>
 
 <!-- SCOREBOARD -->
-
 <div class="screen" id="screen-scores">
   <div class="scores-wrap">
     <div class="scores-title">🏆 SCOREBOARD</div>
@@ -573,7 +576,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- CONFIRM QUIT -->
-
 <div class="screen" id="screen-confirm-quit">
   <div class="confirm-wrap">
     <div class="confirm-title">⚠️ ATTENTION !</div>
@@ -586,7 +588,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- CATEGORIES -->
-
 <div class="screen" id="screen-categories">
   <div class="cat-wrap">
     <div class="cat-title">CHOISIS<br>TA CATÉGORIE</div>
@@ -596,33 +597,29 @@ body { touch-action: pan-x pan-y; }
         <span class="cat-icon">🚗</span>
         <span class="cat-name">VOITURES DU QUOTIDIEN</span>
         <span class="cat-count">🔧 166 voitures au garage</span>
-
-```
-  </button>
-  <button class="cat-btn locked" id="cat-vintage">
-    <span class="cat-icon">🕰️</span>
-    <span class="cat-name">VOITURES VINTAGE</span>
-    <span class="cat-count">Bientôt disponible</span>
-  </button>
-  <button class="cat-btn locked" id="cat-super">
-    <span class="cat-icon">🏎️</span>
-    <span class="cat-name" style="text-align:center">SUPERCARS<br>&amp;<br>HYPERCARS</span>
-    <span class="cat-count">Bientôt disponible</span>
-  </button>
-  <button class="cat-btn locked" id="cat-muscle">
-    <span class="cat-icon">🐎</span>
-    <span class="cat-name">MUSCLE CARS</span>
-    <span class="cat-count">Bientôt disponible</span>
-  </button>
-</div>
-<button class="cat-back-btn" id="btn-cat-back" style="margin-top:20px">◀ RETOUR</button>
-```
-
+        
+      </button>
+      <button class="cat-btn locked" id="cat-vintage">
+        <span class="cat-icon">🕰️</span>
+        <span class="cat-name">VOITURES VINTAGE</span>
+        <span class="cat-count">Bientôt disponible</span>
+      </button>
+      <button class="cat-btn locked" id="cat-super">
+        <span class="cat-icon">🏎️</span>
+        <span class="cat-name" style="text-align:center">SUPERCARS<br>&amp;<br>HYPERCARS</span>
+        <span class="cat-count">Bientôt disponible</span>
+      </button>
+      <button class="cat-btn locked" id="cat-muscle">
+        <span class="cat-icon">🐎</span>
+        <span class="cat-name">MUSCLE CARS</span>
+        <span class="cat-count">Bientôt disponible</span>
+      </button>
+    </div>
+    <button class="cat-back-btn" id="btn-cat-back" style="margin-top:20px">◀ RETOUR</button>
   </div>
 </div>
 
 <!-- MODE DE JEU -->
-
 <div class="screen" id="screen-mode">
   <div class="mode-wrap">
     <div class="mode-title">MODE<br>DE JEU</div>
@@ -644,7 +641,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- PSEUDO -->
-
 <div class="screen" id="screen-pseudo">
   <div class="pseudo-wrap">
     <div class="pseudo-title">TON<br>PSEUDO ?</div>
@@ -655,7 +651,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- READY -->
-
 <div class="screen" id="screen-ready">
   <div class="ready-wrap">
     <div class="ready-flag" id="ready-flag">🏁</div>
@@ -671,7 +666,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- GAME -->
-
 <div class="screen" id="screen-game">
   <div class="hdr">
     <div class="logo">GUESS THE <em>CAR</em></div>
@@ -726,7 +720,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- END -->
-
 <div class="screen" id="screen-end">
   <div class="end-wrap">
     <div class="end-flag">🏁</div>
@@ -753,7 +746,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- MODAL RÈGLES -->
-
 <div class="modal-overlay" id="modal-rules">
   <div class="modal">
     <div class="modal-title y">❓ COMMENT JOUER</div>
@@ -797,7 +789,6 @@ body { touch-action: pan-x pan-y; }
 </div>
 
 <!-- MODAL CRÉDITS -->
-
 <div class="modal-overlay" id="modal-credits">
   <div class="modal">
     <div class="modal-title b">★ CRÉDITS</div>
@@ -1946,7 +1937,6 @@ document.addEventListener('keydown', function(e){
 </script>
 
 <!-- INSTALL BANNER -->
-
 <div id="install-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:linear-gradient(135deg,#1C1C22,#26262F);border-top:2px solid var(--red);padding:14px 16px;box-shadow:0 -4px 20px rgba(0,0,0,0.5)">
   <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:580px;margin:0 auto">
     <div style="flex:1">
