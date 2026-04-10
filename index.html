@@ -1545,7 +1545,7 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('btn-jouer').addEventListener('click', function(){ showScreen('jouer'); });
   document.getElementById('btn-jouer-back').addEventListener('click', function(){ showScreen('home'); });
   document.getElementById('btn-install').addEventListener('click', function(){
-    document.getElementById('modal-install').classList.add('show');
+    showModal('install');
   });
   document.getElementById('btn-install-close').addEventListener('click', function(){
     document.getElementById('modal-install').classList.remove('show');
