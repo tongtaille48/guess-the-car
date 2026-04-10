@@ -73,10 +73,10 @@ body::before {
   75%  { filter: brightness(1.3) scaleX(0.6) }
   100% { filter: brightness(1) }
 }
-.porsche-corner{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);width:clamp(44px,11vw,64px);z-index:52;image-rendering:pixelated;animation:porscheIdle .4s steps(2) infinite}
+.porsche-corner{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:clamp(44px,11vw,64px);z-index:52;image-rendering:pixelated;animation:porscheIdle .4s steps(2) infinite}
 @keyframes porscheIdle { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-2px)} }
 
-.volume-btn{position:absolute;bottom:24px;right:16px;width:clamp(44px,12vw,56px);height:clamp(44px,12vw,56px);z-index:51;background:var(--s2);border:2px solid var(--bd2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
+.volume-btn{position:fixed;bottom:20px;right:calc(50% - 210px + 16px);width:clamp(44px,12vw,56px);height:clamp(44px,12vw,56px);z-index:51;background:var(--s2);border:2px solid var(--bd2);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
 .volume-btn svg { pointer-events: none; width: 60%; height: 60%; }
 .volume-btn:hover { border-color: var(--red); }
 
@@ -482,7 +482,7 @@ body { touch-action: pan-x pan-y; }
 <!-- HOME -->
 <div class="screen active" id="screen-home">
   <div class="version-badge">v0.9.9 Alpha</div>
-  <button id="btn-credits" style="position:fixed;bottom:24px;left:calc(50% - 210px + 110px);font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.3vw,7px);color:var(--tx3);background:none;border:none;cursor:pointer;z-index:49;letter-spacing:1px;pointer-events:auto;">★ CRÉDITS</button>
+  <button id="btn-credits" style="position:fixed;bottom:38px;left:calc(50% - 210px + 16px);font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.3vw,7px);color:#ffffff;background:none;border:none;cursor:pointer;z-index:49;letter-spacing:1px;pointer-events:auto;">★ CRÉDITS</button>
   <div id="debug-ua" style="font-size:8px;color:#666;padding:4px;word-break:break-all;text-align:center;width:100%"></div>
   <div id="debug-ua" style="font-size:7px;color:#444;padding:2px 8px;word-break:break-all;text-align:center;width:100%"></div>
   
@@ -490,46 +490,41 @@ body { touch-action: pan-x pan-y; }
 
     <div style="position:relative;display:inline-block;width:100%;max-width:300px">
       <div class="exhaust-smoke"><div class="smoke-p"></div><div class="smoke-p"></div><div class="smoke-p"></div></div>
-      <svg class="ferrari-pixel" style="margin-bottom:0;width:100%;max-width:220px;height:auto;display:block;margin-left:auto;margin-right:auto" viewBox="0 0 160 55" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-      <!-- Aileron avant -->
-      <rect x="2" y="36" width="24" height="3" fill="#CC1100"/>
-      <rect x="5" y="32" width="16" height="5" fill="#CC1100"/>
-      <!-- Nez pointu -->
-      <rect x="8" y="26" width="18" height="8" fill="#DD2200"/>
-      <!-- Corps principal -->
-      <rect x="18" y="19" width="118" height="14" fill="#CC1100"/>
-      <rect x="22" y="15" width="100" height="6" fill="#DD2200"/>
-      <!-- Prolongement arrière corps -->
-      <rect x="118" y="22" width="18" height="8" fill="#CC1100"/>
-      <!-- Cockpit -->
-      <rect x="55" y="10" width="32" height="11" fill="#111"/>
-      <rect x="59" y="7" width="24" height="6" fill="#1a1a2e"/>
-      <!-- Halo -->
-      <rect x="56" y="7" width="3" height="8" fill="#999"/>
-      <rect x="80" y="7" width="3" height="8" fill="#999"/>
-      <rect x="59" y="7" width="22" height="2" fill="#AAA"/>
-      <!-- Aileron arrière VU DE CÔTÉ = lame + montant avant -->
-      <rect x="118" y="8" width="22" height="3" fill="#EE3311"/>
-      <!-- montant avant -->
-      <rect x="119" y="11" width="3" height="10" fill="#CC1100"/>
-      <!-- petite lame basse -->
-      <rect x="118" y="18" width="14" height="2" fill="#CC1100"/>
-      <!-- Sidepods -->
-      <rect x="48" y="27" width="54" height="6" fill="#BB0F00"/>
-      <!-- Roues avant -->
-      <rect x="6" y="36" width="16" height="13" rx="1" fill="#111"/>
-      <rect x="8" y="38" width="12" height="9" fill="#222"/>
-      <rect x="11" y="40" width="6" height="5" fill="#444"/>
-      <!-- Roues arrière -->
-      <rect x="102" y="36" width="18" height="13" rx="1" fill="#111"/>
-      <rect x="104" y="38" width="14" height="9" fill="#222"/>
-      <rect x="107" y="40" width="8" height="5" fill="#444"/>
-      <!-- Détails jaunes -->
-      <rect x="20" y="22" width="3" height="3" fill="#FFD600"/>
-      <rect x="32" y="19" width="2" height="2" fill="#FFD600"/>
-      <!-- Flammes échappement -->
-      <rect x="138" y="27" width="3" height="3" fill="#FF6600"/>
-    </svg>
+      <svg class="ferrari-pixel" style="margin-bottom:0;width:100%;max-width:240px;height:auto;display:block;margin:0 auto;" viewBox="0 0 120 70" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+  <!-- Carrosserie basse -->
+  <rect x="6" y="36" width="108" height="16" fill="#E84020"/>
+  <!-- Carrosserie haute arrondie pixel -->
+  <rect x="22" y="28" width="66" height="10" fill="#E84020"/>
+  <rect x="18" y="30" width="4" height="8" fill="#E84020"/>
+  <rect x="88" y="30" width="4" height="8" fill="#E84020"/>
+  <rect x="14" y="33" width="4" height="5" fill="#E84020"/>
+  <rect x="92" y="33" width="4" height="5" fill="#E84020"/>
+  <!-- Vitre avant -->
+  <rect x="23" y="29" width="18" height="9" fill="#7DD8E8"/>
+  <!-- Vitre arrière -->
+  <rect x="69" y="29" width="18" height="9" fill="#7DD8E8"/>
+  <!-- Montant central -->
+  <rect x="42" y="29" width="3" height="9" fill="#C03010"/>
+  <rect x="65" y="29" width="3" height="9" fill="#C03010"/>
+  <!-- Plaque milieu -->
+  <rect x="50" y="42" width="14" height="5" fill="#FFD600"/>
+  <!-- Phare avant jaune -->
+  <rect x="2" y="38" width="6" height="6" fill="#FFD600"/>
+  <rect x="0" y="39" width="2" height="4" fill="#FF8800"/>
+  <!-- Phare arrière jaune -->
+  <rect x="108" y="38" width="8" height="6" fill="#FFD600"/>
+  <rect x="116" y="39" width="4" height="4" fill="#FF8800"/>
+  <!-- Bas de caisse -->
+  <rect x="6" y="50" width="108" height="4" fill="#C03010"/>
+  <!-- Roue avant -->
+  <rect x="16" y="46" width="20" height="18" rx="1" fill="#333"/>
+  <rect x="18" y="48" width="16" height="14" fill="#555"/>
+  <rect x="22" y="51" width="8" height="8" fill="#888"/>
+  <!-- Roue arrière -->
+  <rect x="80" y="46" width="20" height="18" rx="1" fill="#333"/>
+  <rect x="82" y="48" width="16" height="14" fill="#555"/>
+  <rect x="86" y="51" width="8" height="8" fill="#888"/>
+</svg>
     </div>
 
     <div class="home-logo">
@@ -539,11 +534,10 @@ body { touch-action: pan-x pan-y; }
     </div>
 
     <div class="menu-btns">
-      <div style="background:transparent;border:2px solid var(--tx3);border-radius:4px;padding:16px 24px;font-family:'Press Start 2P',monospace;font-size:11px;letter-spacing:2px;color:var(--tx3);opacity:0.6;cursor:not-allowed;width:100%;text-align:center;box-sizing:border-box;">🗺️ CAMPAGNE<br><span style="font-size:0.6em;opacity:0.8;letter-spacing:1px">Bientôt disponible !</span></div>
-      <button class="menu-btn play" id="btn-play">🏎️ PARTIE RAPIDE</button>
-      <button class="menu-btn" id="btn-install" style="border-color:#4A90E2;color:#4A90E2;display:none;">📲 INSTALLER L'APP</button>
+      <button class="menu-btn play" id="btn-jouer">🎮 JOUER</button>
       <button class="menu-btn rules" id="btn-rules">❓ COMMENT JOUER</button>
       <button class="menu-btn scores" id="btn-scores">🏆 SCOREBOARD</button>
+      <button class="menu-btn" id="btn-install" style="border-color:#ffffff;color:#ffffff;">📲 INSTALLER L'APP</button>
     </div>
 
     <div class="racing-scene" id="racing-scene" style="width:450px;margin:8px -16px 0;height:100px">
@@ -558,6 +552,19 @@ body { touch-action: pan-x pan-y; }
       </div>
     </div>
 
+  </div>
+</div>
+
+
+<!-- JOUER -->
+<div class="screen" id="screen-jouer">
+  <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;height:100%;padding:0 12px;">
+    <div style="font-family:'Press Start 2P',monospace;font-size:clamp(14px,4vw,18px);color:var(--white);line-height:1.8;text-align:center;">CHOISIR<br>UN MODE</div>
+    <div style="display:flex;flex-direction:column;gap:10px;width:min(360px,92%);">
+      <div style="background:transparent;border:2px solid var(--tx3);border-radius:4px;padding:16px;font-family:'Press Start 2P',monospace;font-size:clamp(8px,2.2vw,10px);letter-spacing:2px;color:var(--tx3);opacity:0.5;cursor:not-allowed;text-align:center;">🗺️ CAMPAGNE<br><span style="font-size:0.7em;opacity:0.8;">Bientôt disponible !</span></div>
+      <button class="menu-btn play" id="btn-play">🏎️ PARTIE RAPIDE</button>
+      <button class="menu-btn" id="btn-jouer-back" style="border-color:var(--tx3);color:var(--tx2);">◀ RETOUR</button>
+    </div>
   </div>
 </div>
 
@@ -1569,20 +1576,26 @@ window.addEventListener('resize', scaleToFit);
 document.addEventListener('DOMContentLoaded', function(){
   initRacingScene();
   document.getElementById('btn-play').addEventListener('click', startGame);
+  document.getElementById('btn-jouer').addEventListener('click', function(){ showScreen('jouer'); });
+  document.getElementById('btn-jouer-back').addEventListener('click', function(){ showScreen('home'); });
 
   // Bouton installer l'app (PWA)
   var deferredPrompt;
-  window.addEventListener('beforeinstallprompt', function(e){
-    e.preventDefault();
-    deferredPrompt = e;
-    var btn = document.getElementById('btn-install');
-    if(btn) btn.style.display = '';
-  });
+  window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); deferredPrompt = e; });
   document.getElementById('btn-install').addEventListener('click', function(){
-    if(deferredPrompt){
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(function(){ deferredPrompt = null; });
-    }
+    document.getElementById('modal-install').classList.add('show');
+  });
+  document.getElementById('btn-install-close').addEventListener('click', function(){
+    document.getElementById('modal-install').classList.remove('show');
+  });
+  document.getElementById('btn-device-iphone').addEventListener('click', function(){
+    document.getElementById('install-steps').innerHTML = '<p style="font-size:clamp(11px,3vw,14px);color:var(--tx2);line-height:2;">1. Ouvre <strong style="color:var(--tx)">Safari</strong> sur ton iPhone<br>2. Appuie sur le bouton <strong style="color:var(--tx)">Partager</strong> 📤 en bas<br>3. Fais défiler et appuie sur <strong style="color:var(--tx)">"Sur l\'écran d\'accueil"</strong> 📱<br>4. Appuie sur <strong style="color:var(--tx)">Ajouter</strong> ✅</p>';
+  });
+  document.getElementById('btn-device-android').addEventListener('click', function(){
+    document.getElementById('install-steps').innerHTML = '<p style="font-size:clamp(11px,3vw,14px);color:var(--tx2);line-height:2;">1. Ouvre <strong style="color:var(--tx)">Chrome</strong> sur ton Android<br>2. Appuie sur le menu <strong style="color:var(--tx)">⋮</strong> en haut à droite<br>3. Appuie sur <strong style="color:var(--tx)">"Installer l\'application"</strong> 📲<br>4. Appuie sur <strong style="color:var(--tx)">Installer</strong> ✅</p>';
+  });
+  document.getElementById('btn-device-pc').addEventListener('click', function(){
+    document.getElementById('install-steps').innerHTML = '<p style="font-size:clamp(11px,3vw,14px);color:var(--tx2);line-height:2;"><strong style="color:var(--yellow)">Chrome / Edge :</strong><br>1. Clique sur l\'icône 💻 dans la barre d\'adresse<br>2. Clique sur <strong style="color:var(--tx)">"Installer"</strong> ✅<br><br><strong style="color:var(--yellow)">Firefox :</strong><br>1. Clique sur le menu <strong style="color:var(--tx)">☰</strong> en haut à droite<br>2. Clique sur <strong style="color:var(--tx)">"Installer"</strong> ✅</p>';
   });
   document.getElementById('btn-volume').addEventListener('click', toggleVolume);
   // Sync volume game button
@@ -1787,5 +1800,20 @@ document.addEventListener('keydown', function(e){
   </div>
 </div>
 
+
+<!-- MODAL INSTALLER L'APP -->
+<div class="modal-overlay" id="modal-install">
+  <div class="modal">
+    <div class="modal-title y">📲 INSTALLER L'APP</div>
+    <p style="font-size:clamp(11px,3vw,13px);color:var(--tx2);margin-bottom:16px;line-height:1.8;">Choisis ton appareil pour voir les instructions :</p>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+      <button id="btn-device-iphone" style="background:var(--s2);border:2px solid var(--red);border-radius:4px;padding:12px;font-family:'Press Start 2P',monospace;font-size:clamp(7px,2vw,9px);color:var(--red);cursor:pointer;letter-spacing:1px;">🍎 iPHONE / iPAD</button>
+      <button id="btn-device-android" style="background:var(--s2);border:2px solid var(--ok);border-radius:4px;padding:12px;font-family:'Press Start 2P',monospace;font-size:clamp(7px,2vw,9px);color:var(--ok);cursor:pointer;letter-spacing:1px;">🤖 ANDROID</button>
+      <button id="btn-device-pc" style="background:var(--s2);border:2px solid var(--yellow);border-radius:4px;padding:12px;font-family:'Press Start 2P',monospace;font-size:clamp(7px,2vw,9px);color:var(--yellow);cursor:pointer;letter-spacing:1px;">💻 PC / MAC</button>
+    </div>
+    <div id="install-steps" style="min-height:80px;margin-bottom:12px;"></div>
+    <button class="modal-close" id="btn-install-close">✕ FERMER</button>
+  </div>
+</div>
 </body>
 </html>
