@@ -445,7 +445,7 @@ body { touch-action: pan-x pan-y; }
 
 
 <div class="screen active" id="screen-home">
-  <div class="version-badge">v0.9.9 Alpha</div>
+  <div class="version-badge">v1.0 Beta</div>
   <button id="btn-credits" style="position:fixed;bottom:38px;left:calc(50% - 210px + 16px);font-family:'Press Start 2P',monospace;font-size:clamp(5px,1.3vw,7px);color:#ffffff;background:none;border:none;cursor:pointer;z-index:49;letter-spacing:1px;pointer-events:auto;">★ CRÉDITS</button>
       
   <div class="home-wrap">
@@ -483,10 +483,10 @@ body { touch-action: pan-x pan-y; }
     </div>
 
     <div class="menu-btns">
-      <div style="background:transparent;border:2px solid var(--tx3);border-radius:4px;padding:16px 24px;font-family:'Press Start 2P',monospace;font-size:11px;letter-spacing:2px;color:var(--tx3);opacity:0.6;cursor:not-allowed;width:100%;text-align:center;box-sizing:border-box;">🗺️ CAMPAGNE<br><span style="font-size:0.6em;opacity:0.8;letter-spacing:1px">Bientôt disponible !</span></div>
+      
       <button class="menu-btn play" id="btn-jouer">🎮 JOUER</button>
-      <button class="menu-btn rules" id="btn-rules">❓ COMMENT JOUER</button>
       <button class="menu-btn scores" id="btn-scores">🏆 SCOREBOARD</button>
+      <button class="menu-btn rules" id="btn-rules">❓ COMMENT JOUER</button>
       <button class="menu-btn" id="btn-install" style="border-color:#ffffff;color:#ffffff;">📲 INSTALLER L'APP</button>
     </div>
 
@@ -783,8 +783,8 @@ marque seule). Une erreur = Game Over ! +100 pts par bonne réponse.</div></div>
       </div>
       <div class="credit-item">
         <div class="credit-role">VERSION</div>
-        <div class="credit-name">v0.9.9 Alpha</div>
-        <div class="credit-sub">Construction de la base de données</div>
+        <div class="credit-name">v1.0 Beta</div>
+        <div class="credit-sub">Création d'un mode campagne</div>
       </div>
     </div>
     <button class="modal-close" id="btn-close-credits">✕ FERMER</button>
@@ -1578,7 +1578,7 @@ document.addEventListener('DOMContentLoaded', function(){
   // cat-vintage désactivé — bientôt disponible
   // cat-super désactivé — bientôt disponible
   // cat-muscle désactivé — bientôt disponible
-  document.getElementById('btn-cat-back').addEventListener('click', function(){ soundMoteur(); showScreen('home'); });
+  document.getElementById('btn-cat-back').addEventListener('click', function(){ soundMoteur(); showScreen('jouer'); });
 
   // Mode de jeu
   document.getElementById('btn-mode-back').addEventListener('click', function(){ soundMoteur(); showScreen('categories'); });
