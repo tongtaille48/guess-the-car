@@ -820,11 +820,12 @@ body { touch-action: pan-x pan-y; }
 
 <script>
 
-const CARS = [
-  {brand:"Renault", model:"Mégane IV", img:"images/IMG_4971.jpeg", ...},
-  {brand:"Renault", model:"Twingo III", img:"images/IMG_4972.jpeg", ...},
-];
 
+
+const CARS = [
+  {brand:"Renault",model:"Mégane IV",img:"images/IMG_4971.jpeg",aliases:["megane","megane iv","mégane","renault megane"],gen:"Renault Mégane IV — 2015 à aujourd'hui",facts:["🏆 Voiture de l'Année 2017","⚡ Disponible en version 100% électrique E-Tech","🎨 Design signé Laurens van den Acker","🌍 Produite à Palencia en Espagne"]},
+  {brand:"Renault",model:"Twingo III",img:"images/IMG_4972.jpeg",aliases:["twingo","twingo iii","renault twingo"],gen:"Renault Twingo III — 2014 à 2023",facts:["🔄 Moteur arrière unique dans sa catégorie","📐 Rayon de braquage de seulement 4,3 m","⚡ Version électrique avec 190 km d'autonomie","🌍 Fabriquée à Novo Mesto en Slovénie"]},
+];
 var CARS_VINTAGE = [];
 var CARS_LOADED = true;
 
