@@ -1555,8 +1555,8 @@ window.addEventListener('resize', scaleToFit);
 document.addEventListener('DOMContentLoaded', function(){
   initRacingScene();
   document.getElementById('btn-play').addEventListener('click', startGame);
-  document.getElementById('btn-jouer').addEventListener('click', function(){ showScreen('jouer'); });
-  document.getElementById('btn-jouer-back').addEventListener('click', function(){ showScreen('home'); });
+  document.getElementById('btn-jouer').addEventListener('click', function(){ soundMoteur(); showScreen('jouer'); });
+  document.getElementById('btn-jouer-back').addEventListener('click', function(){ soundMoteur(); showScreen('home'); });
   document.getElementById('btn-install').addEventListener('click', function(){
     showModal('install');
   });
