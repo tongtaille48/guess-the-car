@@ -1801,8 +1801,9 @@ document.addEventListener('keydown', function(e){
       document.getElementById('modal-dev').classList.add('show');
     }
 
-    // Clic long sur le badge version (PC + mobile)
+    // Clic long (PC) + triple-clic (iPhone fallback)
     var badge = document.querySelector('.version-badge');
+    var clickCount=0, clickTimer=null;
     if(badge){
       badge.addEventListener('mousedown', function(e){ holdTimer=setTimeout(openDev,1000); });
       badge.addEventListener('mouseup', function(){ clearTimeout(holdTimer); });
@@ -1810,6 +1811,11 @@ document.addEventListener('keydown', function(e){
       badge.addEventListener('touchstart', function(e){ e.preventDefault(); holdTimer=setTimeout(openDev,1000); },{passive:false});
       badge.addEventListener('touchend', function(){ clearTimeout(holdTimer); });
       badge.addEventListener('touchmove', function(){ clearTimeout(holdTimer); });
+      badge.addEventListener('click', function(){
+        clickCount++; clearTimeout(clickTimer);
+        clickTimer=setTimeout(function(){ clickCount=0; },800);
+        if(clickCount>=3){ clickCount=0; clearTimeout(holdTimer); openDev(); }
+      });
     }
 
     // Fermer le modal dev
