@@ -815,7 +815,7 @@ const CARS = [
   {brand:"Opel",model:"Mokka B",img:"images/Opel_Mokka_B_1X7A0315.jpg",aliases:["mokka","mokka b","opel mokka","opel mokka b"],gen:"Opel Mokka B — 2020 à aujourd'hui",facts:["🎨 Design Vizor révolutionnaire pour Opel","⚡ Version électrique Mokka-e disponible","📱 Ecran Pure Panel jusqu'à 12 pouces","🌍 Produit à Saragosse en Espagne"]},
   {brand:"Dacia",model:"Spring",img:"images/Dacia_Spring_Electric_45_Business___f_20062021.jpg",aliases:["spring","dacia spring"],gen:"Dacia Spring — 2021 à aujourd'hui",facts:["💰 Voiture électrique neuve la moins chère d'Europe","⚡ 100% électrique avec 230 km d'autonomie","🌍 Produite en Chine par Dongfeng","🔋 Batterie de 26,8 kWh"]},
   {brand:"Ford",model:"Focus IV",img:"images/2019_Ford_Focus_Zetec_1_0.jpg",aliases:["focus","focus iv","ford focus","ford focus iv"],gen:"Ford Focus IV — 2018 à aujourd'hui",facts:["🏆 Compacte familiale best-seller en Europe","⚙️ Moteur EcoBoost 3 cylindres 1.0 L","📱 Système SYNC 3 avec écran tactile","🌍 Produite à Saarlouis en Allemagne"]},
-  {brand:"SEAT",model:"Ibiza V",img:"images/2018_SEAT_Ibiza_SE_Technology_MPi_1_0_Front.jpg",aliases:["ibiza","ibiza v","seat ibiza","seat ibiza v"],gen:"SEAT Ibiza V — 2017 à aujourd'hui",facts:["🏆 Voiture de l'Année 2018 (finaliste)","⚙️ Plateforme MQB A0 partagée avec VW Polo","🎨 Design sportif signature SEAT","🌍 Produite à Barcelone en Espagne"]},
+  {brand:"SEAT",model:"Ibiza V",img:"images/2018_SEAT_Ibiza_SE_Technology_MPi_1.0_Front.jpg",aliases:["ibiza","ibiza v","seat ibiza","seat ibiza v"],gen:"SEAT Ibiza V — 2017 à aujourd'hui",facts:["🏆 Voiture de l'Année 2018 (finaliste)","⚙️ Plateforme MQB A0 partagée avec VW Polo","🎨 Design sportif signature SEAT","🌍 Produite à Barcelone en Espagne"]},
 ];
 
 const CARS_VINTAGE = [];
@@ -1211,12 +1211,18 @@ function next(){
   if(current>=questions.length){ showEnd(); return; }
   soundDrift();
   var zone=document.getElementById('car-zone');
-  zone.style.opacity='0'; zone.style.transform='translateX(-30px)';
+  var img=document.getElementById('carimg');
+  zone.style.transition='opacity 0.2s';
+  zone.style.opacity='0';
   setTimeout(function(){
+    img.src='';
     loadQ();
-    zone.style.transition='none'; zone.style.opacity='1'; zone.style.transform='';
-    setTimeout(function(){ zone.style.transition=''; },50);
-  },250);
+    img.onload=function(){
+      zone.style.opacity='1';
+      img.onload=null;
+    };
+    setTimeout(function(){ zone.style.opacity='1'; },800);
+  },220);
 }
 
 function loadQ(){
