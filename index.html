@@ -1802,3 +1802,50 @@ document.addEventListener('keydown', function(e){
 </div>
 
 </rect%20x=%27233%27%20y=%27210%27%20width=%2746%27%20height=%2718%27%20fill=%27%23ffd600%27></rect%20x=%27221%27%20y=%27200%27%20width=%2770%27%20height=%2745%27%20fill=%27%23cc9900%27></rect%20x=%27334%27%20y=%27336%27%20width=%2764%27%20height=%2736%27%20fill=%27%23555%27></rect%20x=%27318%27%20y=%27322%27%20width=%2796%27%20height=%2764%27%20fill=%27%23333%27></rect%20x=%27306%27%20y=%27310%27%20width=%27120%27%20height=%2788%27%20rx=%278%27%20fill=%27%23111%27></rect%20x=%27114%27%20y=%27336%27%20width=%2764%27%20height=%2736%27%20fill=%27%23555%27></rect%20x=%2798%27%20y=%27322%27%20width=%2796%27%20height=%2764%27%20fill=%27%23333%27></rect%20x=%2786%27%20y=%27310%27%20width=%27120%27%20height=%2788%27%20rx=%278%27%20fill=%27%23111%27></rect%20x=%27378%27%20y=%27205%27%20width=%2748%27%20height=%2732%27%20fill=%27%23ffffaa%27></rect%20x=%2786%27%20y=%27205%27%20width=%2748%27%20height=%2732%27%20fill=%27%23ffffaa%27></rect%20x=%27116%27%20y=%27288%27%20width=%27280%27%20height=%2728%27%20fill=%27%23ffd600%27></rect%20x=%2786%27%20y=%27255%27%20width=%27340%27%20height=%2740%27%20fill=%27%23cc9900%27></rect%20x=%27106%27%20y=%27195%27%20width=%27300%27%20height=%2765%27%20fill=%27%23ffd600%27></rect%20x=%27146%27%20y=%27155%27%20width=%27220%27%20height=%2745%27%20fill=%27%2388ccee%27%20opacity=%27.7%27></rect%20x=%27166%27%20y=%27110%27%20width=%27180%27%20height=%2750%27%20fill=%27%23ccaa00%27></rect%20width=%27512%27%20height=%27512%27%20fill=%27%230f0f12%27></body></html>
+<!-- MODAL DEV -->
+<div class="modal-overlay" id="modal-dev">
+  <div class="modal" style="max-width:420px;max-height:90vh;overflow-y:auto;">
+    <div class="modal-title" style="color:#00CC66;">🛠️ MODE DEV — GALERIE</div>
+    <div style="font-family:'Press Start 2P',monospace;font-size:7px;color:var(--tx2);margin-bottom:14px;letter-spacing:1px;"><span id="dev-count"></span> voitures dans le garage</div>
+    <div id="dev-gallery" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px;"></div>
+    <button class="modal-close" id="btn-close-dev" style="border-color:#00CC66;color:#00CC66;">✕ FERMER</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var clicks=0, timer=null;
+  var badge = document.querySelector('.version-badge');
+  if(!badge) return;
+  badge.style.cursor='pointer';
+  badge.addEventListener('click', function(){
+    clicks++; clearTimeout(timer);
+    timer = setTimeout(function(){ clicks=0; }, 600);
+    if(clicks>=3){
+      clicks=0;
+      var pwd = prompt('🔐 Mot de passe dev :');
+      if(pwd !== 'gtcdev'){ alert('❌ Mauvais mot de passe'); return; }
+      var gallery = document.getElementById('dev-gallery');
+      var count = document.getElementById('dev-count');
+      gallery.innerHTML=''; count.textContent=CARS.length;
+      CARS.forEach(function(car){
+        var item=document.createElement('div');
+        item.style.cssText='background:var(--s2);border-radius:6px;overflow:hidden;border:2px solid var(--bd);';
+        var img=document.createElement('img');
+        img.src=car.img;
+        img.style.cssText='width:100%;aspect-ratio:16/9;object-fit:cover;display:block;';
+        img.onerror=function(){ item.style.borderColor='#E8321A'; };
+        img.onload=function(){ item.style.borderColor='#00CC66'; };
+        var label=document.createElement('div');
+        label.style.cssText='font-size:9px;font-family:Orbitron,sans-serif;color:var(--tx2);padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+        label.textContent=car.brand+' '+car.model;
+        item.appendChild(img); item.appendChild(label); gallery.appendChild(item);
+      });
+      document.getElementById('modal-dev').classList.add('show');
+    }
+  });
+  document.getElementById('btn-close-dev').addEventListener('click', function(){
+    document.getElementById('modal-dev').classList.remove('show');
+  });
+})();
+</script>
