@@ -1799,9 +1799,7 @@ document.addEventListener('keydown', function(e){
   (function(){
     var holdTimer=null;
 
-    function openDev(){
-      devModalOpen=true; var pwd = prompt('Mot de passe dev :'); devModalOpen=false;
-      if(pwd !== 'gtcdev'){ alert('Mauvais mot de passe'); return; }
+    function fillAndShowDev(){
       var gallery = document.getElementById('dev-gallery');
       var count = document.getElementById('dev-count');
       if(!gallery||!count) return;
@@ -1820,6 +1818,18 @@ document.addEventListener('keydown', function(e){
         item.appendChild(img); item.appendChild(label); gallery.appendChild(item);
       });
       document.getElementById('modal-dev').classList.add('show');
+    }
+    function openDev(){
+      // Stopper la musique avant le prompt pour éviter le double au retour
+      stopAmbiance();
+      var pwd = prompt('Mot de passe dev :');
+      if(pwd !== 'gtcdev'){
+        alert('Mauvais mot de passe');
+        if(!isMuted) setTimeout(startAmbiance, 200);
+        return;
+      }
+      fillAndShowDev();
+      if(!isMuted) setTimeout(startAmbiance, 200);
     }
 
     // Clic long (PC) + triple-clic (iPhone fallback)
