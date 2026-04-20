@@ -142,6 +142,7 @@ body::before {
   width: min(320px, 88%); text-align: center; letter-spacing: 2px;
 }
 .pseudo-input:focus { border-color: var(--red); }
+.pseudo-btn:disabled { opacity: 0.35; cursor: not-allowed; }
 .pseudo-btn {
   background: var(--red); border: none; border-radius: 3px;
   padding: 13px 28px; font-family: 'Press Start 2P', monospace;
@@ -602,7 +603,7 @@ body { touch-action: pan-x pan-y; }
     <div class="pseudo-title">TON<br>PSEUDO ?</div>
     <div class="pseudo-sub">Il apparaîtra dans ton score final</div>
     <input class="pseudo-input" id="pseudo-input" type="text" placeholder="Entre ton pseudo..." maxlength="16" autocomplete="off">
-    <button class="pseudo-btn" id="btn-pseudo-ok">▶ CONTINUER</button>
+    <button class="pseudo-btn" id="btn-pseudo-ok" disabled>▶ CONTINUER</button>
   </div>
 </div>
 
@@ -1652,12 +1653,18 @@ document.addEventListener('DOMContentLoaded', function(){
   document.getElementById('btn-credits').addEventListener('click', function(){ showModal('credits'); });
   document.getElementById('btn-close-rules').addEventListener('click', function(){ hideModal('rules'); });
   document.getElementById('btn-close-credits').addEventListener('click', function(){ hideModal('credits'); });
+  var pseudoInput = document.getElementById('pseudo-input');
+  var pseudoBtn = document.getElementById('btn-pseudo-ok');
+  pseudoInput.addEventListener('input', function(){
+    pseudoBtn.disabled = this.value.trim().length === 0;
+  });
+
   document.getElementById('btn-pseudo-ok').addEventListener('click', function(){
     pseudo=document.getElementById('pseudo-input').value.trim(); soundMoteur(); updateReadyScreen(); showScreen('ready');
   });
 
   document.getElementById('pseudo-input').addEventListener('keydown', function(e){
-    if(e.key==='Enter'){ pseudo=document.getElementById('pseudo-input').value.trim(); soundMoteur(); updateReadyScreen(); showScreen('ready'); }
+    if(e.key==='Enter' && this.value.trim().length > 0){ pseudo=this.value.trim(); soundMoteur(); updateReadyScreen(); showScreen('ready'); }
   });
   document.getElementById('btn-launch').addEventListener('click', launchGame);
 
@@ -1820,17 +1827,31 @@ document.addEventListener('keydown', function(e){
       document.getElementById('modal-dev').classList.add('show');
     }
     function openDev(){
-      // Stopper la musique avant le prompt pour éviter le double au retour
-      stopAmbiance();
-      var pwd = prompt('Mot de passe dev :');
-      if(pwd !== 'gtcdev'){
-        alert('Mauvais mot de passe');
-        if(!isMuted) setTimeout(startAmbiance, 200);
-        return;
-      }
-      fillAndShowDev();
-      if(!isMuted) setTimeout(startAmbiance, 200);
+      var modal = document.getElementById('modal-devpwd');
+      var input = document.getElementById('dev-pwd-input');
+      input.value = '';
+      modal.classList.add('show');
+      setTimeout(function(){ input.focus(); }, 200);
     }
+    // Validation mot de passe dev
+    document.getElementById('dev-pwd-ok').addEventListener('click', function(){
+      var input = document.getElementById('dev-pwd-input');
+      if(input.value === 'gtcdev'){
+        document.getElementById('modal-devpwd').classList.remove('show');
+        fillAndShowDev();
+      } else {
+        input.value = '';
+        input.style.borderColor = 'var(--ko)';
+        setTimeout(function(){ input.style.borderColor = ''; }, 800);
+        input.focus();
+      }
+    });
+    document.getElementById('dev-pwd-input').addEventListener('keydown', function(e){
+      if(e.key === 'Enter') document.getElementById('dev-pwd-ok').click();
+    });
+    document.getElementById('dev-pwd-cancel').addEventListener('click', function(){
+      document.getElementById('modal-devpwd').classList.remove('show');
+    });
 
     // Clic long (PC) + triple-clic (iPhone fallback)
     var badge = document.querySelector('.version-badge');
@@ -1896,3 +1917,15 @@ document.addEventListener('keydown', function(e){
   </div>
 </div>
 
+
+<div class="modal-overlay" id="modal-devpwd">
+  <div class="modal" style="max-width:320px;text-align:center;">
+    <div class="modal-title y">🔐 MODE DEV</div>
+    <input id="dev-pwd-input" type="password"
+      autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+      placeholder="Mot de passe..."
+      style="background:var(--s1);border:2px solid var(--bd2);border-radius:3px;padding:12px 16px;font-family:'Orbitron',sans-serif;font-size:16px;color:var(--red2);outline:none;width:100%;text-align:center;letter-spacing:2px;margin-bottom:14px;">
+    <button id="dev-pwd-ok" class="pseudo-btn" style="width:100%">▶ VALIDER</button>
+    <button class="modal-close" id="dev-pwd-cancel" style="margin-top:8px">✕ ANNULER</button>
+  </div>
+</div>
