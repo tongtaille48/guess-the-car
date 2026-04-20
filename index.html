@@ -1799,7 +1799,7 @@ document.addEventListener('keydown', function(e){
     var holdTimer=null;
 
     function openDev(){
-      var pwd = prompt('Mot de passe dev :');
+      stopAmbiance(); var pwd = prompt('Mot de passe dev :'); if(!isMuted) startAmbiance();
       if(pwd !== 'gtcdev'){ alert('Mauvais mot de passe'); return; }
       var gallery = document.getElementById('dev-gallery');
       var count = document.getElementById('dev-count');
