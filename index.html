@@ -1737,7 +1737,7 @@ function updateReadyScreen(){
   });
   document.addEventListener('click', function(){
     if(AC.state==='suspended') AC.resume();
-    setTimeout(function(){ startAmbiance(); },100);
+    if(!ambiancePlaying && !isMuted && !devModalOpen) setTimeout(function(){ startAmbiance(); },100);
   },{once:true});
 });
 
@@ -1794,12 +1794,13 @@ document.addEventListener('keydown', function(e){
 })();
 
 
+  var devModalOpen = false;
   // ===== MODE DEV =====
   (function(){
     var holdTimer=null;
 
     function openDev(){
-      stopAmbiance(); var pwd = prompt('Mot de passe dev :'); if(!isMuted) startAmbiance();
+      devModalOpen=true; var pwd = prompt('Mot de passe dev :'); devModalOpen=false;
       if(pwd !== 'gtcdev'){ alert('Mauvais mot de passe'); return; }
       var gallery = document.getElementById('dev-gallery');
       var count = document.getElementById('dev-count');
