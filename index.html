@@ -792,6 +792,17 @@ marque seule). Une erreur = Game Over ! +100 pts par bonne réponse.</div></div>
   </div>
 </div>
 
+<div class="modal-overlay" id="modal-devpwd">
+  <div class="modal" style="max-width:320px;text-align:center;">
+    <div class="modal-title y">🔐 MODE DEV</div>
+    <input id="dev-pwd-input" type="password"
+      autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
+      placeholder="Mot de passe..."
+      style="background:var(--s1);border:2px solid var(--bd2);border-radius:3px;padding:12px 16px;font-family:'Orbitron',sans-serif;font-size:16px;color:var(--red2);outline:none;width:100%;text-align:center;letter-spacing:2px;margin-bottom:14px;">
+    <button id="dev-pwd-ok" class="pseudo-btn" style="width:100%">▶ VALIDER</button>
+    <button class="modal-close" id="dev-pwd-cancel" style="margin-top:8px">✕ ANNULER</button>
+  </div>
+</div>
 <script>
 
 
@@ -1746,6 +1757,7 @@ function updateReadyScreen(){
     if(AC.state==='suspended') AC.resume();
     if(!ambiancePlaying && !isMuted && !devModalOpen) setTimeout(function(){ startAmbiance(); },100);
   },{once:true});
+
 });
 
 
@@ -1803,80 +1815,81 @@ document.addEventListener('keydown', function(e){
 
   var devModalOpen = false;
   // ===== MODE DEV =====
-  (function(){
-    var holdTimer=null;
+  // ===== MODE DEV =====
+  var holdTimer=null, devClickCount=0, devClickTimer=null;
 
-    function fillAndShowDev(){
-      var gallery = document.getElementById('dev-gallery');
-      var count = document.getElementById('dev-count');
-      if(!gallery||!count) return;
-      gallery.innerHTML=''; count.textContent=CARS.length;
-      CARS.forEach(function(car){
-        var item=document.createElement('div');
-        item.style.cssText='background:var(--s2);border-radius:6px;overflow:hidden;border:2px solid var(--bd);';
-        var img=document.createElement('img');
-        img.src=car.img;
-        img.style.cssText='width:100%;aspect-ratio:16/9;object-fit:cover;display:block;';
-        img.onerror=function(){ item.style.borderColor='#E8321A'; };
-        img.onload=function(){ item.style.borderColor='#00CC66'; };
-        var label=document.createElement('div');
-        label.style.cssText='font-size:9px;font-family:Orbitron,sans-serif;color:var(--tx2);padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
-        label.textContent=car.brand+' '+car.model;
-        item.appendChild(img); item.appendChild(label); gallery.appendChild(item);
-      });
-      document.getElementById('modal-dev').classList.add('show');
-    }
-    function openDev(){
-      var modal = document.getElementById('modal-devpwd');
-      var input = document.getElementById('dev-pwd-input');
-      input.value = '';
-      modal.classList.add('show');
-      setTimeout(function(){ input.focus(); }, 200);
-    }
-    // Validation mot de passe dev
-    document.getElementById('dev-pwd-ok').addEventListener('click', function(){
-      var input = document.getElementById('dev-pwd-input');
-      if(input.value === 'gtcdev'){
-        document.getElementById('modal-devpwd').classList.remove('show');
-        fillAndShowDev();
-      } else {
-        input.value = '';
-        input.style.borderColor = 'var(--ko)';
-        setTimeout(function(){ input.style.borderColor = ''; }, 800);
-        input.focus();
-      }
+  function fillAndShowDev(){
+    var gallery = document.getElementById('dev-gallery');
+    var count = document.getElementById('dev-count');
+    if(!gallery||!count) return;
+    gallery.innerHTML=''; count.textContent=CARS.length;
+    CARS.forEach(function(car){
+      var item=document.createElement('div');
+      item.style.cssText='background:var(--s2);border-radius:6px;overflow:hidden;border:2px solid var(--bd);';
+      var img=document.createElement('img');
+      img.src=car.img;
+      img.style.cssText='width:100%;aspect-ratio:16/9;object-fit:cover;display:block;';
+      img.onerror=function(){ item.style.borderColor='#E8321A'; };
+      img.onload=function(){ item.style.borderColor='#00CC66'; };
+      var label=document.createElement('div');
+      label.style.cssText='font-size:9px;font-family:Orbitron,sans-serif;color:var(--tx2);padding:4px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+      label.textContent=car.brand+' '+car.model;
+      item.appendChild(img); item.appendChild(label); gallery.appendChild(item);
     });
-    document.getElementById('dev-pwd-input').addEventListener('keydown', function(e){
-      if(e.key === 'Enter') document.getElementById('dev-pwd-ok').click();
+    document.getElementById('modal-dev').classList.add('show');
+  }
+
+  function openDev(){
+    var modal = document.getElementById('modal-devpwd');
+    var input = document.getElementById('dev-pwd-input');
+    input.value = '';
+    input.style.borderColor = '';
+    modal.classList.add('show');
+    setTimeout(function(){ input.focus(); }, 200);
+  }
+
+  // Badge : clic long (PC) + triple-clic (iPhone)
+  var badge = document.querySelector('.version-badge');
+  if(badge){
+    badge.addEventListener('mousedown', function(){ holdTimer=setTimeout(openDev,1000); });
+    badge.addEventListener('mouseup', function(){ clearTimeout(holdTimer); });
+    badge.addEventListener('mouseleave', function(){ clearTimeout(holdTimer); });
+    badge.addEventListener('touchstart', function(e){ e.preventDefault(); holdTimer=setTimeout(openDev,1000); },{passive:false});
+    badge.addEventListener('touchend', function(){ clearTimeout(holdTimer); });
+    badge.addEventListener('touchmove', function(){ clearTimeout(holdTimer); });
+    badge.addEventListener('click', function(){
+      devClickCount++; clearTimeout(devClickTimer);
+      devClickTimer=setTimeout(function(){ devClickCount=0; },800);
+      if(devClickCount>=3){ devClickCount=0; clearTimeout(holdTimer); openDev(); }
     });
-    document.getElementById('dev-pwd-cancel').addEventListener('click', function(){
+  }
+
+  // Fermer modal galerie
+  document.addEventListener('click', function(e){
+    if(e.target && e.target.id==='btn-close-dev'){
+      document.getElementById('modal-dev').classList.remove('show');
+    }
+  });
+
+  // Listeners modale mot de passe
+  document.getElementById('dev-pwd-ok').addEventListener('click', function(){
+    var input = document.getElementById('dev-pwd-input');
+    if(input.value === 'gtcdev'){
       document.getElementById('modal-devpwd').classList.remove('show');
-    });
-
-    // Clic long (PC) + triple-clic (iPhone fallback)
-    var badge = document.querySelector('.version-badge');
-    var clickCount=0, clickTimer=null;
-    if(badge){
-      badge.addEventListener('mousedown', function(e){ holdTimer=setTimeout(openDev,1000); });
-      badge.addEventListener('mouseup', function(){ clearTimeout(holdTimer); });
-      badge.addEventListener('mouseleave', function(){ clearTimeout(holdTimer); });
-      badge.addEventListener('touchstart', function(e){ e.preventDefault(); holdTimer=setTimeout(openDev,1000); },{passive:false});
-      badge.addEventListener('touchend', function(){ clearTimeout(holdTimer); });
-      badge.addEventListener('touchmove', function(){ clearTimeout(holdTimer); });
-      badge.addEventListener('click', function(){
-        clickCount++; clearTimeout(clickTimer);
-        clickTimer=setTimeout(function(){ clickCount=0; },800);
-        if(clickCount>=3){ clickCount=0; clearTimeout(holdTimer); openDev(); }
-      });
+      fillAndShowDev();
+    } else {
+      input.value = '';
+      input.style.borderColor = 'var(--ko)';
+      setTimeout(function(){ input.style.borderColor = ''; }, 800);
+      input.focus();
     }
-
-    // Fermer le modal dev
-    document.addEventListener('click', function(e){
-      if(e.target && e.target.id==='btn-close-dev'){
-        document.getElementById('modal-dev').classList.remove('show');
-      }
-    });
-  })();
+  });
+  document.getElementById('dev-pwd-input').addEventListener('keydown', function(e){
+    if(e.key === 'Enter') document.getElementById('dev-pwd-ok').click();
+  });
+  document.getElementById('dev-pwd-cancel').addEventListener('click', function(){
+    document.getElementById('modal-devpwd').classList.remove('show');
+  });
 </script>
 
 <!-- MODAL DEV -->
@@ -1917,15 +1930,3 @@ document.addEventListener('keydown', function(e){
   </div>
 </div>
 
-
-<div class="modal-overlay" id="modal-devpwd">
-  <div class="modal" style="max-width:320px;text-align:center;">
-    <div class="modal-title y">🔐 MODE DEV</div>
-    <input id="dev-pwd-input" type="password"
-      autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false"
-      placeholder="Mot de passe..."
-      style="background:var(--s1);border:2px solid var(--bd2);border-radius:3px;padding:12px 16px;font-family:'Orbitron',sans-serif;font-size:16px;color:var(--red2);outline:none;width:100%;text-align:center;letter-spacing:2px;margin-bottom:14px;">
-    <button id="dev-pwd-ok" class="pseudo-btn" style="width:100%">▶ VALIDER</button>
-    <button class="modal-close" id="dev-pwd-cancel" style="margin-top:8px">✕ ANNULER</button>
-  </div>
-</div>
